@@ -1,0 +1,24 @@
+@mixin flex(
+  $direccion-value: row,
+  $justify-value: flex-start,
+  $items-value: flex-start,
+  $gap-value: 0px,
+  $wrap-value: nowrap
+) {
+  display: flex;
+  flex-direction: $direccion-value;
+  justify-content: $justify-value;
+  align-items: $items-value;
+  gap: $gap-value;
+  flex-wrap: $wrap-value;
+}
+
+@mixin p-horizontal($p-left-value: 0px, $p-rigth-value: 0px) {
+  padding-left: $p-left-value;
+  padding-right: $p-rigth-value;
+}
+
+@mixin p-vertical($p-top-value: 0px, $p-bottom-value: 0px) {
+  padding-top: $p-top-value;
+  padding-bottom: $p-bottom-value;
+}

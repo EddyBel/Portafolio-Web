@@ -1,0 +1,118 @@
+.home__proyects__card {
+  //   background: blue;
+  @include flex(row, center, center);
+  min-height: 500px;
+  width: 100%;
+  max-width: 1000px;
+
+  .home__proyect__card__data {
+    width: 50%;
+    @include flex(column, center, center);
+
+    .home__proyects__card__title {
+      background-color: #fee140;
+      background-image: linear-gradient(90deg, #fee140 0%, #fa7099c0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: $font-special-title-2;
+      font-size: bold;
+      font-style: italic;
+      font-size: 70px;
+      @include flex(row, flex-start, flex-start, 10px);
+
+      .home__proyects__card__titledecoration__title {
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-color: #fbab7e;
+        border-radius: 50%;
+        background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+      }
+    }
+
+    .home__proyects__list__tecnologies {
+      @include flex(row, center, center, 20px, wrap);
+      margin-bottom: 20px;
+
+      .home__proyects__list__tecnologie {
+        background: #d5d8dc;
+        padding: 5px;
+        border-radius: 30px;
+        min-width: 80px;
+        text-align: center;
+      }
+    }
+
+    .home__proyects__card__decoration {
+      width: 90%;
+      height: 2px;
+      border-radius: 12px;
+      background: #e5e7e99f;
+      margin-bottom: 19px;
+      margin-top: 12px;
+    }
+
+    .home__proyects__card__descriptions {
+      max-width: 400px;
+      color: #eaeceea2;
+    }
+
+    .home__proyects__container__buttons {
+      @include flex(row, center, center, 15px);
+      margin-top: 20px;
+
+      // .home__proyects__buttons__direccion {
+      //   background: #212f3d;
+      //   padding: 5px;
+      //   border-radius: 12px;
+      //   min-width: 120px;
+      //   text-align: center;
+      //   transition: all 300ms;
+      //   color: #fefefe;
+
+      //   &:hover {
+      //     transform: scale(1.1);
+      //   }
+      // }
+
+      .home__proyects__buttons__direccion {
+        color: #fefefe;
+        font-family: $font-special-title-2;
+        border-bottom: solid 2px #fefefe;
+        font-size: 30px;
+        transition: all 400ms;
+
+        &:hover {
+          color: #f9e79f;
+        }
+      }
+    }
+  }
+
+  .home__proyect__card__container__img {
+    @include flex(column, space-between, center);
+    height: 400px;
+    width: 50%;
+
+    .home__proyect__card__number {
+      font-family: $font-special-title-2;
+      font-size: 150px;
+      font-weight: bold;
+      color: #eaecee;
+      background-color: #ffdee9;
+      background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .home__proyect__card__img {
+      min-width: 400px;
+      min-height: 200px;
+      border-radius: 15px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      //   background-attachment: fixed;
+    }
+  }
+}

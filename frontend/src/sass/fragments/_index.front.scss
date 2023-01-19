@@ -1,0 +1,95 @@
+.home__container__window {
+  @include flex(row, center, center);
+
+  width: 50%;
+  height: 100vh;
+
+  .home__img__front {
+    width: 200px;
+    height: 300px;
+    background-image: url("img/front.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 70px;
+    position: relative;
+    animation: watch_front 900ms normal;
+
+    @keyframes watch_front {
+      0% {
+        transform: scale(0) translateX(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1) translateX(0%);
+        opacity: 100;
+      }
+    }
+
+    .home__decoration__front {
+      width: $size_decoration_front;
+      height: $size_decoration_front;
+      border: 3px solid rgba($color: #000000, $alpha: 1);
+      position: absolute;
+      transform: translateX(-100px) translateY(-60px);
+      z-index: -1;
+
+      .home__decoration__front__scare {
+        width: $size_sub_decoration_front;
+        height: $size_sub_decoration_front;
+        background: rgba($color: #000000, $alpha: 1);
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        animation: move_scare_of_decoration_front 5s infinite;
+
+        @keyframes move_scare_of_decoration_front {
+          0% {
+            left: 0px;
+            top: 0px;
+          }
+          25% {
+            left: $size_decoration_front - $size_sub_decoration_front - 3px;
+            top: 0px;
+          }
+          50% {
+            left: $size_decoration_front - $size_sub_decoration_front - 3px;
+            top: $size_decoration_front - $size_sub_decoration_front - 3px;
+          }
+          75% {
+            left: 0px;
+            top: $size_decoration_front - $size_sub_decoration_front - 3px;
+          }
+          100% {
+            left: 0px;
+            top: 0px;
+          }
+        }
+      }
+    }
+
+    .home__stats__front {
+      @include flex(column, center, center);
+      position: absolute;
+      width: $size_decoration_front;
+      height: $size_decoration_front;
+      background: #000000;
+      border-radius: 30px;
+      bottom: 0;
+      right: 0;
+      transform: translateY(70px) translateX(100px);
+
+      .home__stats__front__title,
+      .home__stats__front__stats {
+        color: #fcfffe;
+        font-family: $font-special-title;
+      }
+
+      .home__stats__front__title {
+        font-size: 27px;
+      }
+      .home__stats__front__stats {
+        font-size: 35px;
+      }
+    }
+  }
+}

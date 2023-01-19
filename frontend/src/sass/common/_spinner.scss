@@ -1,0 +1,23 @@
+.container-spinner {
+  width: 100%;
+  @include flex(row, center, center);
+  padding: 10px;
+
+  .spinner {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #3498db;
+    border-top-color: transparent;
+    animation: rotate__spinner 1s infinite;
+
+    @keyframes rotate__spinner {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

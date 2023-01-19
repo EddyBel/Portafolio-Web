@@ -1,0 +1,164 @@
+$size-decoration-loading-page: 600px;
+$separation-value-decoration-loading-page: 20px;
+
+.loading__page {
+  @include flex(row, space-between, center);
+  background: #000;
+  min-height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  transition: all 400ms;
+
+  &.activate {
+    transform: translateY(-100%);
+  }
+
+  .loading__page__text__content {
+    @include flex(column, center, flex-start);
+    min-height: 100vh;
+    width: 50%;
+    padding: 60px;
+    animation: watch__text__content 400ms normal;
+
+    @keyframes watch__text__content {
+      0% {
+        opacity: 0;
+        transform: translate(-100%);
+      }
+      100% {
+        opacity: 100;
+        transform: translateX(0%);
+      }
+    }
+
+    .loading__page__percentage {
+      font-size: 220px;
+      font-family: $font-special-title;
+      color: #d5d8dc;
+    }
+
+    .loading__page__description {
+      font-size: 30px;
+      font-family: $font-title-2;
+      max-width: 500px;
+      color: #d5d8dc;
+    }
+  }
+
+  .loading__page__decoration__rigth {
+    @include flex(row, flex-end, center);
+    min-height: 100vh;
+    width: 50%;
+
+    .loading__page__decoration__container {
+      width: $size-decoration-loading-page;
+      height: $size-decoration-loading-page;
+      min-width: $size-decoration-loading-page;
+      min-height: $size-decoration-loading-page;
+      position: relative;
+      transform: translateX(300px);
+      animation: watch__decoration__loading__page 700ms normal;
+
+      @keyframes watch__decoration__loading__page {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translate(300px);
+        }
+      }
+
+      .loading__page__decoration__sphere__one,
+      .loading__page__decoration__sphere__two,
+      .loading__page__decoration__sphere__tree {
+        position: absolute;
+        background: linear-gradient(
+          43deg,
+          #4158d0 0%,
+          #c850c0 46%,
+          #ffcc70 100%
+        );
+        box-shadow: 0px 0px 40px rgba($color: #000000, $alpha: 0.2);
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        border-radius: 45%;
+
+        &::before {
+          content: "";
+          position: absolute;
+          width: 99%;
+          height: 99%;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+          background: #000;
+          border-radius: 45%;
+        }
+
+        .loading__page__icon__svg {
+          background: #eaecee;
+          width: 40px;
+          height: 40px;
+          padding: 10px;
+          border-radius: 12px;
+          position: absolute;
+
+          &.linux {
+            transform: translateX(0px) translateY(130px);
+          }
+
+          &.python {
+            transform: translateX(130px) translateY(0px);
+          }
+
+          &.SQL {
+            transform: translateX(20px) translateY(440px);
+          }
+
+          &.javascript {
+            transform: translateX(-20px) translateY(230px);
+          }
+
+          &.typescript {
+            transform: translateY(60px);
+            animation: move_tech 2s infinite;
+          }
+
+          &.java {
+            transform: translateX(80px) translateY(270px);
+          }
+
+          &.kotlin {
+            transform: translateX(80px) translateY(400px);
+          }
+        }
+      }
+
+      .loading__page__decoration__sphere__one {
+        width: $size-decoration-loading-page -
+          $separation-value-decoration-loading-page;
+        height: $size-decoration-loading-page -
+          $separation-value-decoration-loading-page;
+      }
+
+      .loading__page__decoration__sphere__two {
+        width: $size-decoration-loading-page -
+          ($separation-value-decoration-loading-page * 7);
+        height: $size-decoration-loading-page -
+          ($separation-value-decoration-loading-page * 7);
+      }
+
+      .loading__page__decoration__sphere__tree {
+        width: $size-decoration-loading-page -
+          ($separation-value-decoration-loading-page * 15);
+        height: $size-decoration-loading-page -
+          ($separation-value-decoration-loading-page * 15);
+      }
+    }
+  }
+}

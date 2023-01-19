@@ -1,0 +1,22 @@
+$size_decoration_front: 150px;
+$size_sub_decoration_front: 30px;
+
+.home {
+  .home__main {
+    @include flex(row, space-between, center);
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .home__body {
+    background: #090c0f;
+    padding-top: 400px;
+    min-height: 200vh;
+    width: 100vw;
+
+    .home__proyects {
+      @include flex(column, center, center);
+      padding: 20px;
+    }
+  }
+}
