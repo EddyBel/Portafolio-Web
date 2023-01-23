@@ -1,0 +1,35 @@
+.contact {
+  .contact__content {
+    background: #fdfefe;
+    background-size: cover;
+    min-height: 100px;
+    @include flex(column, center, center, 10px);
+    padding: 20px;
+    border-radius: 23px;
+
+    .contact__content__title {
+      font-size: 50px;
+      font-family: $font-title-2;
+    }
+    .contact__content__description {
+      font-size: 15px;
+      font-family: $font-title-2;
+      color: rgba(0, 0, 0, 0.863);
+    }
+    .contact__content__list__text {
+      @include flex(column, center, center, 8px);
+    }
+    .contact__social__networks__links {
+      @include flex(row, center, center, 10px);
+
+      & > a {
+        @include flex(row, center, center);
+        transition: all 400ms;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+      }
+    }
+  }
+}

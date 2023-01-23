@@ -9,14 +9,18 @@ $size_sub_decoration_front: 30px;
   }
 
   .home__body {
-    background: #090c0f;
-    padding-top: 400px;
     min-height: 200vh;
     width: 100vw;
+    padding: 30px;
+    padding-top: 400px;
+    padding-bottom: 300px;
 
-    .home__proyects {
-      @include flex(column, center, center);
-      padding: 20px;
+    .home__body__proyects {
+      @include flex(column, center, center, 300px);
+    }
+
+    .home_body__contact {
+      margin-top: 200px;
     }
   }
 }

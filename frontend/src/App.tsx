@@ -1,5 +1,5 @@
 import { Routes } from "./routes/routes";
-import { NavBar } from "./components/layout/index";
+import { NavBar, Footer } from "./components/layout/index";
 import { useGithub } from "./hook/useContext";
 import { LoadingPage } from "./pages/loading";
 
@@ -14,6 +14,7 @@ function App() {
         <>
           <NavBar />
           <Routes />
+          <Footer />
         </>
       )}
     </div>
