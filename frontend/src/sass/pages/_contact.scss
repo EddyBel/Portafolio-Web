@@ -1,6 +1,12 @@
 .contact {
+  min-height: 100vh;
+  @include flex(column, center, center, 10px);
+  padding: 10px;
+
   .contact__content {
     background: #fdfefe;
+    width: 100%;
+    max-width: 1200px;
     background-size: cover;
     min-height: 100px;
     @include flex(column, center, center, 10px);
@@ -10,6 +16,7 @@
     .contact__content__title {
       font-size: 50px;
       font-family: $font-title-2;
+      text-align: center;
     }
     .contact__content__description {
       font-size: 15px;

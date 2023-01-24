@@ -5,10 +5,18 @@
   border-radius: 30px;
   overflow: hidden;
 
+  @media (max-width: 660px) {
+    @include flex(column, center, center);
+  }
+
   .card__main__proyect__content {
     @include flex(column, center, center, 10px);
     width: 50%;
     padding: 20px;
+
+    @media (max-width: 660px) {
+      width: 100%;
+    }
 
     .card__main__proyect__content__title {
       font-size: 40px;
@@ -55,5 +63,15 @@
     min-height: 800px;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+
+    @media (max-width: 660px) {
+      width: 100%;
+    }
+
+    @media (max-width: 660px) {
+      min-height: 400px;
+      background-size: contain;
+    }
   }
 }

@@ -4,6 +4,16 @@
   width: 50%;
   height: 100vh;
 
+  @media (max-width: 950px) {
+    width: 100%;
+    @include p-horizontal(20px, 0px);
+    // @include flex(column, center, center);
+  }
+
+  @media (max-width: 450px) {
+    @include flex(column, center, center);
+  }
+
   .home__data__container__buttons {
     @include flex(row, center, center, 25px);
     padding: 20px;
@@ -17,10 +27,18 @@
     padding: 10px;
     animation: mini__banner__floating 3s infinite, watch_up_banner 500ms normal;
 
+    @media (max-width: 665px) {
+      font-size: 15px;
+    }
+
     .home__data__mini__banner__ship {
       width: 20px;
       height: 20px;
       object-fit: cover;
+
+      @media (max-width: 665px) {
+        transform: scale(0.6);
+      }
     }
 
     @keyframes mini__banner__floating {
@@ -62,8 +80,14 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       color: tomato;
-
       animation: watch_text_left 900ms normal;
+
+      @media (max-width: 665px) {
+        font-size: 30px;
+      }
+      @media (max-width: 450px) {
+        font-size: 40px;
+      }
     }
 
     .home__data__title__name {
@@ -71,6 +95,13 @@
       font-weight: bold;
       color: #17202a;
       animation: watch_text_left 900ms normal;
+
+      @media (max-width: 665px) {
+        font-size: 20px;
+      }
+      @media (max-width: 450px) {
+        font-size: 40px;
+      }
     }
   }
 
@@ -86,6 +117,10 @@
       width: 2px;
       height: 17px;
       background: #000000;
+    }
+
+    @media (max-width: 665px) {
+      font-size: 16px;
     }
   }
 }

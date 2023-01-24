@@ -22,9 +22,21 @@ export function Footer() {
         <p className="footer__user__content__description">{description}</p>
       </div>
 
-      <ListFooter title="Other Pages" items={FOOTER_PAGES} />
-      <ListFooter title="Resources" items={FOOTER_RESOURCES} />
-      <ListFooter title="Contacts" items={FOOTER_CONTACT} />
+      <ListFooter
+        title="Other Pages"
+        items={FOOTER_PAGES}
+        key={`section__footer__${Math.random()}`}
+      />
+      <ListFooter
+        title="Resources"
+        items={FOOTER_RESOURCES}
+        key={`section__footer__${Math.random()}`}
+      />
+      <ListFooter
+        title="Contacts"
+        items={FOOTER_CONTACT}
+        key={`section__footer__${Math.random()}`}
+      />
     </footer>
   );
 }

@@ -3,9 +3,10 @@ $color__text__footer: #eaeceeb0;
 .footer {
   background: #070a0e;
   padding: 20px;
-  @include flex(row, space-between, center, 10px);
+  @include flex(row, space-between, center, 10px, wrap);
   @include p-horizontal(50px, 50px);
   min-height: 500px;
+  overflow: hidden;
 
   .footer__user__content {
     max-width: 250px;

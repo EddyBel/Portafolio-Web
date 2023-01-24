@@ -1,25 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useGithub } from "../../hook/useContext";
-
-const options = [
-  {
-    title: "Repositories",
-    path: "/repositories",
-  },
-  {
-    title: "About me",
-    path: "/about",
-  },
-  {
-    title: "Blog",
-    path: "/blog",
-  },
-  {
-    title: "CV",
-    path: "/cv",
-  },
-];
+import { NAVBAR_OPTIONS } from "../../web.config";
 
 export function NavBar() {
   const user_github = useGithub();
@@ -30,6 +12,15 @@ export function NavBar() {
     clickSelect();
   }, []);
 
+  useEffect(() => {
+    const button = document.getElementById("navbar__button__burguer");
+    const menu = document.getElementById("menu");
+
+    button?.addEventListener("click", () => {
+      menu?.setAttribute("style", "transform: translateX(0%);");
+    });
+  }, []);
+
   return (
     <nav className="navbar">
       <Link to="/" className="navbar__container__profile">
@@ -37,17 +28,29 @@ export function NavBar() {
         <h4 className="navbar__user__name">{user_name}</h4>
       </Link>
       <ul className="navbar__container__options">
-        {options.map((item) => (
+        {NAVBAR_OPTIONS.map((item) => (
           <li key={item.title}>
-            <Link to={item.path} className="navbar__option">
-              {item.title}
-            </Link>
+            {item.title === "CV" ? (
+              <a href={item.path} className="navbar__option">
+                {item.title}
+              </a>
+            ) : (
+              <Link to={item.path} className="navbar__option">
+                {item.title}
+              </Link>
+            )}
           </li>
         ))}
       </ul>
-      <a href="#" className="navbar__button__contact">
+      <a href="/contact" className="navbar__button__contact">
         Contact
       </a>
+      <button className="navbar__button__burguer" id="navbar__button__burguer">
+        {""}
+        <div className="line__burguer one"></div>
+        <div className="line__burguer special"></div>
+        <div className="line__burguer two"></div>
+      </button>
     </nav>
   );
 }

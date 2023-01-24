@@ -1,5 +1,5 @@
 import { Routes } from "./routes/routes";
-import { NavBar, Footer } from "./components/layout/index";
+import { NavBar, Footer, Menu } from "./components/layout/index";
 import { useGithub } from "./hook/useContext";
 import { LoadingPage } from "./pages/loading";
 
@@ -12,6 +12,7 @@ function App() {
         <LoadingPage />
       ) : (
         <>
+          <Menu />
           <NavBar />
           <Routes />
           <Footer />

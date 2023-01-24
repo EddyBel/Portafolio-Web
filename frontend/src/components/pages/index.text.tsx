@@ -31,8 +31,8 @@ export function MainText() {
         ""
       </p>
       <div className="home__data__container__buttons">
-        <ButtonNormal>About more</ButtonNormal>
-        <ButtonShadown>Proyects</ButtonShadown>
+        <ButtonNormal path="/about">About more</ButtonNormal>
+        <ButtonShadown path="/repositories">Repositories</ButtonShadown>
       </div>
     </div>
   );

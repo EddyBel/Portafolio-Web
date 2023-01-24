@@ -1,0 +1,89 @@
+.menu {
+  position: fixed;
+  min-height: 100vh;
+  width: 100%;
+  background: #eaecee;
+  z-index: 999999 !important;
+  transition: all 400ms;
+  @include flex(column, center, center, 10px);
+  transform: translateX(100%);
+
+  .menu__arrow__back {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    transition: all 400ms;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .menu__container__avatar {
+    @include flex(column, center, center, 10px);
+
+    .menu__avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+
+    .menu__user__name {
+      font-size: 30px;
+      font-family: $font-title-2;
+    }
+  }
+
+  .menu__container__options {
+    @include flex(column, center, center, 15px);
+    width: 100%;
+    transition: all 400ms;
+
+    & > li {
+      @include flex(row, center, center);
+      width: 100%;
+      max-width: 150px;
+      transition: all 400ms;
+      //   margin-top: 15px;
+    }
+
+    & > li > a {
+      text-align: center;
+      width: 100%;
+      padding: 10px;
+      background: #d3d3d3;
+      border-radius: 30px;
+      transition: all 400ms;
+
+      &:hover {
+        background: #000;
+        color: #fff;
+      }
+
+      &:focus {
+        box-shadow: 0px 0px 0px 3px rgba($color: #000000, $alpha: 1);
+      }
+    }
+  }
+
+  .menu__button__contact {
+    background: #000;
+    padding: 10px;
+    border-radius: 30px;
+    color: #d3d3d3;
+    width: 100%;
+    max-width: 150px;
+    text-align: center;
+    margin-top: 30px;
+    transition: all 400ms;
+
+    &:hover {
+      background: #d3d3d3;
+      color: #000;
+      box-shadow: 0px 0px 0px 3px rgba($color: #000000, $alpha: 1);
+    }
+    &:focus {
+      box-shadow: 0px 0px 0px 3px rgba($color: #000000, $alpha: 1);
+    }
+  }
+}

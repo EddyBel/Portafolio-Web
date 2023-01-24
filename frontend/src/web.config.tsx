@@ -1,4 +1,14 @@
-import { Link, Phone, Email, Apps, Game, Paper } from "./components/common/svg";
+import {
+  Link,
+  Phone,
+  Email,
+  Apps,
+  Game,
+  Paper,
+  Linkedin__Basic,
+  Github__Basic,
+  Twitter__Basic,
+} from "./components/common/svg";
 const env = import.meta.env;
 
 // ------------------------------------------- ENVIRONMENT VARIABLES
@@ -16,22 +26,39 @@ const SIZE_MINI = "20px";
 /** Colors for svgs */
 const COLOR__WHITE = "#eaeceeb0";
 
+// ------------------------------------------- NAVBAR OPTIONS OF RENDERER
+
+const NAVBAR_OPTIONS = [
+  {
+    title: "Repositories",
+    path: "/repositories",
+  },
+  {
+    title: "About me",
+    path: "/about",
+  },
+  {
+    title: "CV",
+    path: "source/cv.pdf",
+  },
+];
+
 //  ------------------------------------------ FOOTER OPTIONS OF RENDERER
 
 /** @type {object[]} List of objects containing the elements with the pages to be rendered in the footer  */
 const FOOTER_PAGES = [
   {
-    path: "eddybel.github.io/Notebook/",
+    path: "https://eddybel.github.io/Notebook/",
     title: "Notebook",
     svg: <Link width={SIZE_MINI} height={SIZE_MINI} color={COLOR__WHITE} />,
   },
   {
-    path: "eddybel.github.io/Notebook/",
+    path: "/",
     title: "Portafolio",
     svg: <Link width={SIZE_MINI} height={SIZE_MINI} color={COLOR__WHITE} />,
   },
   {
-    path: "eddybel.github.io/Notebook/",
+    path: "https://eddybel.github.io/",
     title: "EddyBel",
     svg: <Link width={SIZE_MINI} height={SIZE_MINI} color={COLOR__WHITE} />,
   },
@@ -40,18 +67,18 @@ const FOOTER_PAGES = [
 /** @type {object[]} List of objects containing the elements with the resources to be rendered in the footer  */
 const FOOTER_RESOURCES = [
   {
-    path: "eddybel.github.io/Notebook/",
+    path: "https://github.com/EddyBel/Math-my",
     title: "Aplications",
     svg: <Apps width={SIZE_MINI} height={SIZE_MINI} color={COLOR__WHITE} />,
   },
   {
-    path: "eddybel.github.io/Notebook/",
+    path: "https://github.com/EddyBel/Plane-Wars-Game-Pygame",
     title: "VideoGames",
     svg: <Game width={SIZE_MINI} height={SIZE_MINI} color={COLOR__WHITE} />,
   },
   {
-    path: "eddybel.github.io/Notebook/",
-    title: "Documentation",
+    path: "https://eddybel.github.io/Math-my/",
+    title: "Documentations",
     svg: <Paper width={SIZE_MINI} height={SIZE_MINI} color={COLOR__WHITE} />,
   },
 ];
@@ -59,37 +86,40 @@ const FOOTER_RESOURCES = [
 /** @type {object[]} List of objects containing the elements with the contact to be rendered in the footer  */
 const FOOTER_CONTACT = [
   {
-    path: "eddybel.github.io/Notebook/",
+    path: "https://github.com/EddyBel",
     title: "Github",
-    svg: <Email width={SIZE_MINI} height={SIZE_MINI} color={COLOR__WHITE} />,
+    svg: (
+      <Github__Basic
+        width={SIZE_MINI}
+        height={SIZE_MINI}
+        color={COLOR__WHITE}
+      />
+    ),
   },
   {
-    path: "eddybel.github.io/Notebook/",
+    path: "https://www.linkedin.com/in/eduardo-rangel-eddybel",
     title: "Linkedin",
-    svg: <Email width={SIZE_MINI} height={SIZE_MINI} color={COLOR__WHITE} />,
+    svg: (
+      <Linkedin__Basic width={"15px"} height={"15px"} color={COLOR__WHITE} />
+    ),
   },
   {
-    path: "eddybel.github.io/Notebook/",
-    title: "Instagram",
-    svg: <Email width={SIZE_MINI} height={SIZE_MINI} color={COLOR__WHITE} />,
-  },
-  {
-    path: "eddybel.github.io/Notebook/",
+    path: "https://twitter.com/EddyDigitalTech",
     title: "Twitter",
-    svg: <Email width={SIZE_MINI} height={SIZE_MINI} color={COLOR__WHITE} />,
+    svg: <Twitter__Basic width={"15px"} height={"15px"} color={COLOR__WHITE} />,
   },
   {
-    path: "eddybel.github.io/Notebook/",
+    path: "mailto:kratos61918@gmail.com",
     title: "kratos61918@gmail.com",
     svg: <Email width={SIZE_MINI} height={SIZE_MINI} color={COLOR__WHITE} />,
   },
   {
-    path: "eddybel.github.io/Notebook/",
+    path: "mailto:eduardoantonio72432@gmail.com",
     title: "eduardoantonio72432@gmail.com",
     svg: <Email width={SIZE_MINI} height={SIZE_MINI} color={COLOR__WHITE} />,
   },
   {
-    path: "eddybel.github.io/Notebook/",
+    path: "https://api.whatsapp.com/send?phone=5621836340&text=Hi!%20I%20hope%20he%20is%20well.",
     title: "+52 5621836340",
     svg: <Phone width={SIZE_MINI} height={SIZE_MINI} color={COLOR__WHITE} />,
   },
@@ -103,4 +133,5 @@ export {
   FOOTER_PAGES,
   FOOTER_RESOURCES,
   FOOTER_CONTACT,
+  NAVBAR_OPTIONS,
 };

@@ -1,15 +1,17 @@
-export function ButtonShadown({ children, onClick }: any) {
+import { Link } from "react-router-dom";
+
+export function ButtonShadown({ children, onClick, path }: any) {
   return (
-    <button className="button__shadown" onClick={onClick}>
+    <Link to={path} className="button__shadown" onClick={onClick}>
       {children}
-    </button>
+    </Link>
   );
 }
 
-export function ButtonNormal({ children, onClick }: any) {
+export function ButtonNormal({ children, onClick, path }: any) {
   return (
-    <button className="button__normal" onClick={onClick}>
+    <Link to={path} className="button__normal" onClick={onClick}>
       {children}
-    </button>
+    </Link>
   );
 }

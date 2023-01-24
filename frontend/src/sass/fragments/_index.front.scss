@@ -4,6 +4,16 @@
   width: 50%;
   height: 100vh;
 
+  @media (max-width: 950px) {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+  }
+
+  @media (max-width: 450px) {
+    display: none;
+  }
+
   .home__img__front {
     width: 200px;
     height: 300px;
@@ -13,6 +23,7 @@
     border-radius: 70px;
     position: relative;
     animation: watch_front 900ms normal;
+    transition: all 500ms;
 
     @keyframes watch_front {
       0% {
@@ -25,13 +36,21 @@
       }
     }
 
+    @media (max-width: 950px) {
+      transform: translateY(-100px) translateX(100%) scale(0.6);
+    }
+
+    @media (max-width: 566px) {
+      transform: translateY(-120px) translateX(40%) scale(0.6);
+    }
+
     .home__decoration__front {
       width: $size_decoration_front;
       height: $size_decoration_front;
       border: 3px solid rgba($color: #000000, $alpha: 1);
       position: absolute;
       transform: translateX(-100px) translateY(-60px);
-      z-index: -1;
+      z-index: -2;
 
       .home__decoration__front__scare {
         width: $size_sub_decoration_front;

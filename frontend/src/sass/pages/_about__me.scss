@@ -1,6 +1,7 @@
 .about__me {
   min-height: 100vh;
-  padding-top: 80px;
+  padding-top: 100px;
+  padding-bottom: 100px;
   @include flex(column, flex-start, center);
 
   .about__me__container__title {
@@ -37,6 +38,10 @@
     @include flex(row, center, center);
     width: 100%;
 
+    @media (max-width: 750px) {
+      @include flex(column, center, center, 20px);
+    }
+
     .about__me__content__text {
       @include flex(column, center, center, 10px);
       width: 60%;
@@ -44,6 +49,10 @@
       min-height: 400px;
       padding: 20px;
       text-align: justify;
+
+      @media (max-width: 750px) {
+        width: 100%;
+      }
 
       & > p {
         width: 100%;
@@ -73,7 +82,7 @@
         height: 300px;
         background: transparent;
         object-fit: cover;
-        box-shadow: 0px 10px 30px 5px rgba($color: #000000, $alpha: 0.2);
+        // box-shadow: 0px 10px 30px 5px rgba($color: #000000, $alpha: 0.2);
         animation: about__me__front 900ms normal;
 
         @keyframes about__me__front {
@@ -83,6 +92,11 @@
           100% {
             transform: translateX(0px) scale(1);
           }
+        }
+
+        @media (max-width: 750px) {
+          width: 200px;
+          height: 200px;
         }
       }
     }

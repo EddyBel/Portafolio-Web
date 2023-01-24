@@ -21,12 +21,17 @@
           opacity: 100;
         }
       }
+
+      @media (max-width: 674px) {
+        font-size: 20px;
+      }
     }
 
     .repositories__description__page {
       font-size: 20px;
       color: rgba(0, 0, 0, 0.623);
       animation: repositories__description__watch 900ms normal;
+      text-align: center;
 
       @keyframes repositories__description__watch {
         0% {
@@ -37,6 +42,10 @@
           transform: translateX(0%);
           opacity: 100;
         }
+      }
+
+      @media (max-width: 674px) {
+        font-size: 15px;
       }
     }
   }
