@@ -6,6 +6,10 @@ import {
   FOOTER_CONTACT,
 } from "../../web.config";
 
+/**
+ * Web footer.
+ * @returns {Component} - Component that renders the footer.
+ */
 export function Footer() {
   const github__state = useGithub();
   const avatar = github__state?.user_data?.avatar_url;

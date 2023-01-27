@@ -106,6 +106,8 @@ dist
 
 # Ignore modules frontend
 frontend/node_modules/
+frontend/docs/
+frontend/dist/
 frontend/.env
 
 # Ignore modules backend

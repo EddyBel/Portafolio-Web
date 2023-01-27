@@ -56,7 +56,7 @@ export const About = () => {
 
         <div className="about__me__content__img">
           <img
-            src="img/fronts/fronts (17).png"
+            src="img/front_about.png"
             alt="front__img__by__about__page"
             className="about__me__front__img"
           />

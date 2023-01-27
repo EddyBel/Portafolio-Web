@@ -42,9 +42,9 @@ export function NavBar() {
           </li>
         ))}
       </ul>
-      <a href="/contact" className="navbar__button__contact">
+      <Link to="/contact" className="navbar__button__contact">
         Contact
-      </a>
+      </Link>
       <button className="navbar__button__burguer" id="navbar__button__burguer">
         {""}
         <div className="line__burguer one"></div>

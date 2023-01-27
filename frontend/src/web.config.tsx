@@ -77,8 +77,8 @@ const FOOTER_RESOURCES = [
     svg: <Game width={SIZE_MINI} height={SIZE_MINI} color={COLOR__WHITE} />,
   },
   {
-    path: "https://eddybel.github.io/Math-my/",
-    title: "Documentations",
+    path: "https://eddybel.github.io/Portafolio-Web/index.html",
+    title: "Documentation",
     svg: <Paper width={SIZE_MINI} height={SIZE_MINI} color={COLOR__WHITE} />,
   },
 ];

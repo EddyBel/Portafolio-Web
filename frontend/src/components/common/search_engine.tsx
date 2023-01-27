@@ -1,10 +1,12 @@
 import { Search } from "./svg";
+import { SearchEngineProps } from "../../types/index";
 
-type SearchEngineProps = {
-  placeholder?: string;
-  onChange?: any;
-};
-
+/**
+ * Component rendering a search engine.
+ * @param {string | undefined} placeholder - Input placeholder text.
+ * @param {ChangeEventHandler | undefinend} onChange - Function that will handle.
+ * @returns {Component} Search component.
+ */
 export function SearchEngine({ placeholder, onChange }: SearchEngineProps) {
   return (
     <div className="search">

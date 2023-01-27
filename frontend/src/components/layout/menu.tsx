@@ -4,6 +4,10 @@ import { useGithub } from "../../hook/useContext";
 import { NAVBAR_OPTIONS } from "../../web.config";
 import { useEffect } from "react";
 
+/**
+ * Menu displayed when using mobile devices.
+ * @returns {Component} - Menu component
+ */
 export function Menu() {
   const github__state = useGithub();
   const avatar = github__state?.user_data?.avatar_url;
@@ -54,9 +58,9 @@ export function Menu() {
           </li>
         ))}
       </ul>
-      <a href="/contact" className="menu__button__contact">
+      <Link to="/contact" className="menu__button__contact">
         Contact
-      </a>
+      </Link>
     </div>
   );
 }

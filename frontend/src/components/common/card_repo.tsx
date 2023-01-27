@@ -1,12 +1,15 @@
-type CardRepoProps = {
-  name: string;
-  description: string;
-  meta: string[];
-  path: string;
-  language: string;
-  id: number;
-};
+import { CardRepoProps } from "../../types/index";
 
+/**
+ * Chart component displaying a github repository.
+ * @param {string} name - Repository name
+ * @param {string} description - Repository description
+ * @param {string[]} meta - List of labels
+ * @param {string} path - Repository path
+ * @param {string} language - Repository language primary
+ * @param {number} id - Repository id
+ * @returns {Component} - Component that renders a card.
+ */
 export function CardRepo({
   name,
   description,

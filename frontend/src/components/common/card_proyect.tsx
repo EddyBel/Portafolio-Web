@@ -1,13 +1,5 @@
+import { CardProyectProps } from "../../types/index";
 import { Github, Web } from "./svg";
-
-type CardProps = {
-  title: string;
-  description: string;
-  background: string;
-  github: string;
-  web: string | undefined;
-  direction?: boolean;
-};
 
 export function CardProyect({
   title,
@@ -16,7 +8,7 @@ export function CardProyect({
   github,
   web,
   direction = true,
-}: CardProps) {
+}: CardProyectProps) {
   const url__background: string = background;
 
   return direction ? (
