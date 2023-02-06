@@ -105,16 +105,7 @@ dist
 
 
 # Ignore modules frontend
-frontend/node_modules/
-frontend/docs/
-frontend/dist/
-frontend/.env
-
-# Ignore modules backend
-backend/env/
-backend/__pycache__/
-backend/app/__pycache__/
-backend/app/routes/__pycache__/
-backend/app/models/__pycache__/
-backend/app/services/__pycache__/
-backend/app/util/__pycache__/
+node_modules/
+docs/
+dist/
+.env
