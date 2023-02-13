@@ -33,11 +33,19 @@ export const HTTP_ONLY = false;
 
 // ------------------------------------------ VALUES
 
-/** Sizes for svg */
+/** @type {string} Sizes for svg */
 export const SIZE_MINI = "20px";
 
-/** Colors for svgs */
+/** @type {string} Colors for svgs */
 export const COLOR__WHITE = "#eaeceeb0";
+
+// ------------------------------------------- LOAD OPTIONS
+/** @type {string[]} List of words to use on loading screens */
+export const LOAD_PHRASES = [
+  "Wait a moment",
+  "Getting information from the api",
+  "Soon we will get the information",
+];
 
 // ------------------------------------------- NAVBAR OPTIONS OF RENDERER
 
@@ -52,7 +60,7 @@ export const NAVBAR_OPTIONS = [
   },
   {
     title: "CV",
-    path: "source/cv.pdf",
+    path: "source/CV.pdf",
   },
 ];
 

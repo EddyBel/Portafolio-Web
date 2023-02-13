@@ -37,7 +37,6 @@ export function YoAPIProvider({ children }: any) {
     getMyBiography(tocken)
       .then((response) => setAboutMe(response))
       .catch((error) => {
-        console.log("error");
         // Re-authenticate in the api to obtain a token.
         autenticationInMyAPI().then((newResponse) => {
           // If the response exists, and the tocken property exists, it creates a cookie with that tocken and re-requests the data.

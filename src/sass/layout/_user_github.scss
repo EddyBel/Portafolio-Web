@@ -1,0 +1,12 @@
+.nav__user__github__username {
+  color: #fff;
+  position: fixed;
+  left: 13px;
+  top: 5px;
+  z-index: 110;
+  mix-blend-mode: difference;
+  font-size: 2rem;
+  font-family: $font-title-1;
+  font-weight: bold;
+  cursor: pointer;
+}

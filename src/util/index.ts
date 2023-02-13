@@ -1,4 +1,4 @@
 import { generateText } from "./generate";
-import { typingText, incrementValue } from "./render";
+import { typingText, incrementValue, changeStringInfinite } from "./render";
 
-export { generateText, typingText, incrementValue };
+export { generateText, typingText, incrementValue, changeStringInfinite };

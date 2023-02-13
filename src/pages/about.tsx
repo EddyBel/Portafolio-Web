@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { YoAPIBiographyContent } from "../types/index";
-import { Spinner } from "../components/common/index";
+import { BookLoader } from "../components/common/index";
 import { useMyAPI, useWeb } from "../hook/useContext";
 import { YO_API } from "../web.config";
 
@@ -30,7 +30,7 @@ export const About = () => {
       <div className="about__me__container__content">
         <div className="about__me__content__text">
           {!aboutContent ? (
-            <Spinner key="Spinner loading about me" />
+            <BookLoader key="Spinner loading about me" />
           ) : (
             aboutContent?.content.map((paragraph) => (
               <p key={`content_paragraph_${paragraph}`}>{paragraph}</p>

@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+.proyects {
+  min-height: 200vh;
+  background: #fff;
+  padding-top: 40px;
+  z-index: 10;
+
+  .projects__scrolling__text_left {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    min-height: 120px;
+
+    & > h1 {
+      white-space: nowrap;
+      font-size: 7rem;
+      position: absolute;
+      left: 0;
+      top: 0;
+      animation: scroll__translate__text__left 30s infinite linear;
+      font-family: $font-title-1;
+
+      @media (max-width: 612px) {
+        font-size: 6rem;
+      }
+    }
+  }
+
+  .projects__scrolling__text_right {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    min-height: 120px;
+
+    & > h1 {
+      white-space: nowrap;
+      font-size: 5rem;
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      animation: scroll__translate__text__right 30s infinite linear;
+      font-family: $font-title-1;
+
+      @media (max-width: 612px) {
+        font-size: 5rem;
+      }
+    }
+  }
+
+  .container__proyects {
+    padding: 25px;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    @include flex(row, center, center, 30px, wrap);
+
+    .card__project {
+      width: 100%;
+      height: 800px;
+      max-width: 600px;
+      overflow: hidden;
+      position: relative;
+      border-radius: 12px;
+      transition: transform 600ms;
+
+      @media (max-width: 652px) {
+        height: 400px;
+      }
+
+      .project__background__efect {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: #00000041;
+        transition: all 300ms;
+      }
+
+      &:hover {
+        .project__background {
+          transform: scale(1.1);
+        }
+        .project__background__efect {
+          backdrop-filter: blur(5px);
+          background: none;
+        }
+      }
+
+      .project__background {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transition: transform 300ms;
+        object-fit: cover;
+      }
+
+      .name__background {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 2rem;
+        color: #fff;
+        font-family: "Bebas Neue", cursive;
+      }
+
+      .project__container__data {
+        position: absolute;
+        left: 5px;
+        z-index: 12;
+        bottom: 5px;
+        width: 100%;
+        @include flex(row, space-between, center, 20px);
+
+        .project__description {
+          font-size: 1rem;
+          color: #fff;
+          font-family: $font-text-2;
+          width: 100%;
+          max-width: 300px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes scroll__translate__text__left {
+  0% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes scroll__translate__text__right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}

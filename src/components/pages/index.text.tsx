@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { typingText } from "../../util/index";
-import { ButtonNormal, ButtonShadown } from "../common/index";
+import { ButtonLine, ButtonShadown, ButtonLearn } from "../common/index";
 import { useGithub } from "../../hook/useContext";
 
 export function MainText() {
@@ -13,26 +13,55 @@ export function MainText() {
   }, [description]);
 
   return (
-    <div className="home__container__data">
-      <h3 className="home__data__mini__banner">
-        <img
-          src="img/nave.png"
-          alt="wave_img"
-          className="home__data__mini__banner__ship"
-        />
-        Full-Stack Developer
-      </h3>
-      <h1 className="home__data__title">
-        <span className="home__data__title__greetings">Hi!</span>
-        <span className="home__data__title__greetings">My name is</span>
-        <span className="home__data__title__name">Eduardo Rangel</span>
+    <section className="home__main">
+      <div className="home__main__circle__center"></div>
+
+      <h1 className="home__main__title">
+        <span className="greeting one">HI!</span>
+        <span className="greeting two">I AM</span>
+        <span className="greeting tree">EDUARDO</span>
       </h1>
-      <p className="home__data__description" id="home__data__description">
-        ""
-      </p>
-      <div className="home__data__container__buttons">
-        <ButtonNormal path="/about">About me</ButtonNormal>
-        <ButtonShadown path="/repositories">Repositories</ButtonShadown>
+
+      <h6 className="home__main__description" id="home__data__description">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
+        voluptatum, repellat labore rerum cumque ipsa aliquid odit alias
+        architecto provident numquam quidem deserunt doloremque nesciunt soluta
+        nemo asperiores fuga dignissimos!
+      </h6>
+
+      <DecorationPoints />
+      <DecorationPoints prefig="two" />
+
+      <div className="home__main__decoration__img__one"></div>
+      <div className="home__main__decoration__img__two"></div>
+      <a href="#ABOUT" className="scroll_indication">
+        <div className="scroll"> </div>
+      </a>
+      {/* <div className="home__main__decoration__img__tree"></div> */}
+    </section>
+  );
+}
+
+export function DecorationPoints({ prefig }: any) {
+  return (
+    <div className={`home__main__decoration__points ${prefig}`}>
+      <div className="home__main__decoration__container__points">
+        <div className="home__main__decoration__point"></div>
+        <div className="home__main__decoration__point"></div>
+        <div className="home__main__decoration__point"></div>
+        <div className="home__main__decoration__point"></div>
+      </div>
+      <div className="home__main__decoration__container__points">
+        <div className="home__main__decoration__point"></div>
+        <div className="home__main__decoration__point"></div>
+        <div className="home__main__decoration__point"></div>
+        <div className="home__main__decoration__point"></div>
+      </div>
+      <div className="home__main__decoration__container__points">
+        <div className="home__main__decoration__point"></div>
+        <div className="home__main__decoration__point"></div>
+        <div className="home__main__decoration__point"></div>
+        <div className="home__main__decoration__point"></div>
       </div>
     </div>
   );

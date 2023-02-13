@@ -2,25 +2,39 @@ $size_decoration_front: 150px;
 $size_sub_decoration_front: 30px;
 
 .home {
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+
   .home__main {
     @include flex(row, space-between, center);
     height: 100vh;
-    width: 100vw;
+    position: relative;
   }
 
-  .home__body {
-    min-height: 200vh;
+  .home__body__proyects {
+    @include flex(flex, center, center, 30px);
+    background: #fff;
     width: 100vw;
-    padding: 30px;
-    padding-top: 400px;
-    padding-bottom: 300px;
+    padding: 60px;
+    @include p-vertical(400px, 400px);
 
-    .home__body__proyects {
-      @include flex(column, center, center, 300px);
+    .home__decoration__proyects {
+      background: #f4f6f6;
+      width: 6px;
+      min-height: 200vh;
+      height: 100%;
+      border-radius: 12px;
     }
 
-    .home_body__contact {
-      margin-top: 200px;
+    .home__container__proyects {
+      width: 100%;
+      @include flex(column, center, center, 200px);
+      padding: 30px;
     }
+  }
+
+  .cards_3d {
+    @include flex(row, center, center, 80px);
   }
 }

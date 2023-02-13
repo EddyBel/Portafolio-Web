@@ -1,5 +1,11 @@
 import { Routes } from "./routes/routes";
-import { NavBar, Footer, Menu } from "./components/layout/index";
+import {
+  NavBar,
+  Footer,
+  Menu,
+  UserGithub,
+  NavOptions,
+} from "./components/layout/index";
 import { useGithub, useMyAPI } from "./hook/useContext";
 import { LoadingPage } from "./pages/loading";
 
@@ -9,16 +15,12 @@ function App() {
 
   return (
     <div className="App">
-      {!contextGithub && !MyApi ? (
-        <LoadingPage />
-      ) : (
-        <>
-          <Menu />
-          <NavBar />
-          <Routes />
-          <Footer />
-        </>
-      )}
+      {/* <LoadingPage /> */}
+      <Menu />
+      <UserGithub />
+      <NavOptions />
+      <Routes />
+      <Footer />
     </div>
   );
 }

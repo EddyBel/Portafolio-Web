@@ -38,13 +38,36 @@ export function ButtonNormal({ children, onClick, path }: any) {
  */
 export function ButtonSendMessage({ sendToMessage }: any) {
   return (
-    <button
-      className="form__send__to__message"
-      id="button__that__sends__the__message"
-      onClick={sendToMessage}
-    >
-      <SendMessage width="30px" height="30px" color="#AED6F1" />
-      Send message
+    <button className="button_send_to_message" onClick={sendToMessage}>
+      <div className="svg-wrapper-1">
+        <div className="svg-wrapper">
+          <SendMessage width="30px" height="30px" color="#fff" />
+        </div>
+      </div>
+      <span>Send</span>
     </button>
   );
+}
+
+export function ButtonLearn({ path, children }: any) {
+  return (
+    <Link to={path} className="learn-more">
+      <span className="circle" aria-hidden="true">
+        <span className="icon arrow" />
+      </span>
+      <span className="button-text">{children}</span>
+    </Link>
+  );
+}
+
+export function ButtonLine({ path, children }: any) {
+  return (
+    <Link to={path} className="button_line">
+      {children}
+    </Link>
+  );
+}
+
+export function ButtonGlich() {
+  return <button className="button_glich">HOVER ME</button>;
 }

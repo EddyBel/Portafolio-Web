@@ -1,0 +1,26 @@
+.options_navigations {
+  position: fixed;
+  right: 0;
+  left: 0;
+  margin: auto;
+  z-index: 100;
+  @include flex(row, flex-end, center, 10px);
+  padding: 10px;
+  padding-left: 40px;
+  mix-blend-mode: difference;
+  min-width: 100vw;
+
+  .options__navigations__container {
+    @include flex(row, flex-end, center, 10px);
+    @media (max-width: 457px) {
+      display: none;
+    }
+  }
+
+  #navbar__button__burguer {
+    display: none;
+    @media (max-width: 457px) {
+      display: block;
+    }
+  }
+}

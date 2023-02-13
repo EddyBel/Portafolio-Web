@@ -1,4 +1,6 @@
-import { FrontImg } from "../pages/index.front";
-import { MainText } from "../pages/index.text";
+import { FrontImg } from "./index.front";
+import { MainText } from "./index.text";
+import { Proyects } from "./index.proyects";
+import { IndexAbout } from "./index.about";
 
-export { FrontImg, MainText };
+export { FrontImg, MainText, Proyects, IndexAbout };

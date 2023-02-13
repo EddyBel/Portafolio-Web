@@ -7,6 +7,14 @@ import { YoAPIProvider } from "./context/yoapi_context";
 import { ProviderWeb } from "./context/web_context";
 import "./sass/global.scss";
 
+console.log(
+  "¡Hola! ¿Buscando un saludo secreto? ¡Aquí tienes uno! ¡Que la fuerza te acompañe siempre!😜✌️"
+);
+
+console.log(
+  "Hello! Looking for a secret greeting? Here's one! May the force be with you always!😜✌️"
+);
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <BrowserRouter>
     <ProviderWeb>

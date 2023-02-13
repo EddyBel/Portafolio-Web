@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { sendMessageFromAPI } from "../../service/myApi.api";
 import { getCookie } from "../../util/cookies";
-import { Alert, Spinner, ButtonSendMessage } from "../common/index";
+import {
+  Alert,
+  Spinner,
+  ButtonSendMessage,
+  InputBox,
+  LinesLoader,
+} from "../common/index";
 import { Alert as IconAlert, ArrowCheck } from "../common/svg";
 
 export function Form() {
@@ -120,42 +126,29 @@ export function Form() {
   return (
     <form className="formulary" action="Formulary">
       <h1 className="formulary__title">Contact me at</h1>
+      <p className="formulary__description">
+        You can contact me by sending a message directly to my email through
+        this form
+      </p>
       <div className="container_formulary_doble_input">
-        <InputForm
-          label="What is your name ?"
-          placeholder="Enter your name"
-          setState={setName}
-          id="name"
-        />
-        <InputForm
-          label="What is your last name ?"
-          placeholder="Enter your last name"
-          setState={setLastName}
-          id="last-name"
-        />
+        <InputBox type="text" isRequired={true} setState={setName}>
+          Name
+        </InputBox>
+        <InputBox type="text" isRequired={true} setState={setLastName}>
+          Username
+        </InputBox>
       </div>
       <div className="container_formulary_doble_input">
-        <InputForm
-          label="What is your email address ?"
-          placeholder="Enter your email address"
-          setState={setEmail}
-          id="email"
-          type="email"
-        />
-        <InputForm
-          label="What is your mobile number ?"
-          placeholder="Enter your mobile number"
-          setState={setNumber}
-          id="phone"
-          type="number"
-        />
+        <InputBox type="email" isRequired={true} setState={setEmail}>
+          Email
+        </InputBox>
+        <InputBox type="number" isRequired={true} setState={setNumber}>
+          Phone number
+        </InputBox>
       </div>
-      <InputForm
-        label="What is the subject of the message ?"
-        placeholder="Enter your subject"
-        setState={setSubject}
-        id="subject"
-      />
+      <InputBox type="text" isRequired={true} setState={setSubject}>
+        Subject
+      </InputBox>
       <div className="form__contact__container__input">
         <label htmlFor="label" className="form__contact__label">
           You can compose your message
@@ -167,6 +160,7 @@ export function Form() {
           onChange={(e) => setMessage(e.target.value)}
         />
       </div>
+
       {!error ? (
         <></>
       ) : (
@@ -183,46 +177,10 @@ export function Form() {
         />
       )}
       {loadingState ? (
-        <Spinner />
+        <LinesLoader />
       ) : (
         <ButtonSendMessage sendToMessage={sendToMessage} />
       )}
     </form>
-  );
-}
-
-type FormInput = {
-  label?: string;
-  placeholder?: string;
-  setState?: any;
-  id?: string;
-  type?: string;
-};
-
-function InputForm({
-  label = "What is your name ?",
-  placeholder,
-  setState,
-  id,
-  type = "text",
-}: FormInput) {
-  const handlesEventInput = (e: any) => {
-    let value = e.target.value;
-    if (setState) setState(value);
-  };
-
-  return (
-    <div className="form__contact__container__input">
-      <label htmlFor="label" className="form__contact__label">
-        {label}
-      </label>
-      <input
-        type={type}
-        placeholder={placeholder}
-        className="form__contact__input"
-        onChange={handlesEventInput}
-        id={`input-${id}`}
-      />
-    </div>
   );
 }
