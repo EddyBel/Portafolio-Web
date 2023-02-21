@@ -1,4 +1,5 @@
 import Highlight, { defaultProps } from "prism-react-renderer";
+import Prism from "prismjs";
 import theme from "prism-react-renderer/themes/okaidia";
 
 export function Pre(props: any) {
@@ -21,7 +22,7 @@ export function Pre(props: any) {
 
 export function Code(props: any) {
   let className = props.className;
-  let language: string;
+  let language: any;
   try {
     language = verificarLenguaje(className.replace(/language-/, ""));
   } catch {
