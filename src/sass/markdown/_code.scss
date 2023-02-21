@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.markdown__code__box {
+  width: 100%;
+  max-width: 800px;
+  background-image: linear-gradient(to left bottom, #17202a, #000);
+  border-radius: 12px;
+  margin: auto;
+
+  .markdown__box__data {
+    width: 100%;
+    @include flex(row, space-between, center);
+    @include p-horizontal(20px, 20px);
+    @include p-vertical(5px, 5px);
+
+    & > h1 {
+      color: #ffffffb6;
+      font-size: 16px;
+    }
+
+    .markdown__box__decoration {
+      @include flex(row, center, center, 5px);
+
+      & > div {
+        background: #fff;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+
+      .red {
+        background: #e74c3c;
+      }
+      .yellow {
+        background: #f4d03f;
+      }
+      .green {
+        background: #2ecc71;
+      }
+    }
+  }
+
+  .markdown__container__code {
+    padding: 20px;
+    width: 100%;
+    color: #ffffffb7;
+    overflow-x: auto;
+    font-family: "Source Code Pro", monospace;
+
+    & > div {
+      & > div {
+        font-family: "Source Code Pro", monospace;
+        font-size: 13px;
+
+        & > span {
+          font-family: "Source Code Pro", monospace;
+          font-size: 13px;
+        }
+      }
+    }
+
+    .line__code {
+      width: 100%;
+      @include flex(row, flex-start, center, 14px);
+
+      .line__code__number {
+        width: 100px;
+        min-width: 25px;
+        max-width: 25px;
+        color: #ffffff62;
+        font-size: 12px;
+        text-align: center;
+      }
+    }
+  }
+}

@@ -3,13 +3,15 @@ import {
   autenticationInMyAPI,
   getMyBiography,
   getMyProyects,
+  getAllNotesFromApi,
 } from "../service/myApi.api";
-import { YoAPIBiography, YoAPIProyects } from "../types/index";
+import { YoAPIBiography, YoAPIProyects, YoAPIAllNotes } from "../types/index";
 import { createCookie, getCookie } from "../util/cookies";
 
 type ContextYoAPI = {
   aboutMe: YoAPIBiography | null | undefined;
   proyects: YoAPIProyects | null | undefined;
+  notes: YoAPIAllNotes | null | undefined;
 };
 
 /** Context of the personal information obtained from the api. */
@@ -22,11 +24,15 @@ export const YoApiContext = createContext<ContextYoAPI | null>(null);
  */
 export function YoAPIProvider({ children }: any) {
   /** This status stores biographical information */
-  const [aboutMe, setAboutMe] = useState<YoAPIBiography | null>();
+  const [aboutMe, setAboutMe] = useState<YoAPIBiography | null>(null);
   /** This status keeps personal projects */
-  const [proyects, setProyects] = useState<YoAPIProyects | null>();
+  const [proyects, setProyects] = useState<YoAPIProyects | null>(null);
   /** Status of the basic information stored in the api */
   const [info, setInfo] = useState(null);
+  /** Validate that the authentication is correct */
+  const [auth, setAuth] = useState<any>();
+  /** This status keep all personal notes */
+  const [notes, setNotes] = useState<YoAPIAllNotes | null>(null);
 
   /**
    * Request other information to the personal api
@@ -66,9 +72,25 @@ export function YoAPIProvider({ children }: any) {
             } else console.error("Error when extracting a new tocken");
         });
       });
+    // Get the notes from the api
+    getAllNotesFromApi(tocken)
+      .then((response) => setNotes(response))
+      .catch((error) => {
+        // Re-authenticate in the api to obtain a token.
+        autenticationInMyAPI().then((newResponse) => {
+          // If the response exists, and the tocken property exists, it creates a cookie with that tocken and re-requests the data.
+          if (newResponse)
+            if (newResponse.tocken) {
+              // Create the cookie with the tocken.
+              createCookie("Access-Tocken", newResponse.tocken);
+              // Make a new request.
+              getData(newResponse.tocken);
+            } else console.error("Error when extracting a new tocken");
+        });
+      });
   };
 
-  useEffect(() => {
+  const Authenticate = () => {
     // Get tocken cookie.
     const tocken = getCookie("Access-Tocken");
 
@@ -91,12 +113,19 @@ export function YoAPIProvider({ children }: any) {
       // Make the request with the cookie that has the token.
       getData(tocken);
     }
+  };
+
+  useEffect(() => {
+    Authenticate(); // Make the request to the api.
+    // setTimeout(() => Authenticate(), 35000); // In 35 seconds it makes the request to the api again.
+    // setTimeout(() => Authenticate(), 50000); // In 50 seconds it makes the request to the api again
   }, []);
 
   /**Values to be served by the global state.*/
   const values = {
     aboutMe: aboutMe,
     proyects: proyects,
+    notes: notes,
   };
 
   return (

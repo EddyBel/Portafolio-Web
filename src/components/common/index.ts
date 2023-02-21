@@ -13,6 +13,7 @@ import { Alert } from "./alerts";
 import { BookLoader } from "./book_loader";
 import { InputBox } from "./inputs";
 import { LinesLoader } from "./lines_loader";
+import { NoteCard } from "./note";
 
 export {
   ButtonShadown,
@@ -28,4 +29,5 @@ export {
   ButtonLine,
   InputBox,
   LinesLoader,
+  NoteCard,
 };

@@ -1,5 +1,11 @@
 import { YO_API, USERNAME_YO_API, PASSWORD_YO_API } from "../web.config";
-import { YoAPIAuth, YoAPIBiography, YoAPIProyects } from "../types/index";
+import {
+  YoAPIAuth,
+  YoAPIBiography,
+  YoAPIProyects,
+  YoAPIAllNotes,
+  YoAPIContentNote,
+} from "../types/index";
 
 /**
  * Authentication in the api to access the application.
@@ -133,6 +139,66 @@ export const sendMessageFromAPI = (tocken: string, data: object) => {
       .catch((error) => {
         console.error(`Error in sendMessageFromAPI: ${error.message}`);
         throw new Error(`Error sending message: ${error.message}`);
+      });
+  } catch (err) {
+    throw new Error(`Error in the request`);
+  }
+};
+
+export const getAllNotesFromApi = (
+  tocken: string
+): Promise<YoAPIAllNotes | null> => {
+  try {
+    // Create request headers
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("X-Tocken", tocken);
+
+    // Create the request to the api
+    return fetch(`${YO_API}api/notes/all`, {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    })
+      .then((response) => {
+        if (!response.ok)
+          throw new Error(`Failed to fetch projects: ${response.statusText}`);
+        return response.json();
+      })
+      .catch((error) => {
+        console.error(`Error in getMyProyects: ${error.message}`);
+        throw new Error(`Failed to fetch projects: ${error.message}`);
+      });
+  } catch (err) {
+    throw new Error(`Error in the request`);
+  }
+};
+
+export const getContentNoteFromApi = (
+  tocken: string,
+  matter: string,
+  file: string
+): Promise<YoAPIContentNote | null> => {
+  try {
+    // Create request headers
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("X-Tocken", tocken);
+
+    // Create the request to the api
+    return fetch(`${YO_API}api/notes/content/${matter}/${file}`, {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    })
+      .then((response) => {
+        if (!response.ok)
+          throw new Error(`Failed to fetch projects: ${response.statusText}`);
+        return response.json();
+      })
+      .catch((error) => {
+        console.error(`Error in getMyProyects: ${error.message}`);
+        throw new Error(`Failed to fetch projects: ${error.message}`);
       });
   } catch (err) {
     throw new Error(`Error in the request`);

@@ -1,0 +1,22 @@
+.article_note {
+  min-height: 100vh;
+  padding: 20px;
+  @include p-vertical(80px, 100px);
+
+  .article__note__container {
+    border-radius: 20px;
+    background: #fff;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    @include flex(column, flex-start, flex-start, 15px);
+
+    .article__note__loader__container {
+      width: 100%;
+      min-height: 400px;
+      @include flex(row, center, center);
+    }
+  }
+}

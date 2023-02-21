@@ -21,6 +21,7 @@ export const USER_NAME = env.VITE_GITHUB_USER_NAME || "eddybel";
 export const YO_API = env.VITE_YO_API;
 export const USERNAME_YO_API = env.VITE_USERNAME_YO_API;
 export const PASSWORD_YO_API = env.VITE_PASSWORD_YO_API;
+export const TOKEN_GITHUB = env.VITE_TOKEN_GITHUB;
 
 // ------------------------------------------ COOKIES OPTIONS
 
@@ -57,6 +58,10 @@ export const NAVBAR_OPTIONS = [
   {
     title: "About me",
     path: "/about",
+  },
+  {
+    title: "Notes",
+    path: "/notes",
   },
   {
     title: "CV",

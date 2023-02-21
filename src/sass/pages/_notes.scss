@@ -1,0 +1,143 @@
+.notes {
+  min-height: 100vh;
+  padding: 40px;
+  padding-top: 80px;
+  padding-bottom: 100px;
+
+  @media (max-width: 520px) {
+    padding: 5px;
+    padding-top: 80px;
+    padding-bottom: 100px;
+  }
+
+  .notes__container__user {
+    @include flex(row, center, center, 30px);
+    width: 100%;
+    margin-bottom: 70px;
+
+    @media (max-width: 532px) {
+      @include flex(column, center, center, 10px);
+    }
+
+    .notes__user__avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      animation: watch__avatar 700ms normal;
+
+      @media (max-width: 702px) {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    .notes__welcome__text {
+      font-size: 13px;
+      font-family: $font-title-2;
+      max-width: 500px;
+      animation: watch__notes__welcome__text 1s normal;
+
+      @media (max-width: 702px) {
+        font-size: 10px;
+      }
+
+      @media (max-width: 532px) {
+        text-align: center;
+        font-size: 9px;
+        padding: 5px;
+      }
+
+      & > span {
+        font-size: 23px;
+        font-family: $font-title-2;
+        background-color: #8bc6ec;
+        background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: #000;
+
+        @media (max-width: 702px) {
+          font-size: 18px;
+        }
+
+        @media (max-width: 532px) {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+
+  .notes__filter__tect {
+    @include flex(row, center, center, 15px, wrap);
+    margin-top: 15px;
+
+    .notes__filter__tec {
+      background: #fff;
+      padding: 10px;
+      color: #000;
+      border-radius: 30px;
+      transition: all 400ms;
+      min-width: 80px;
+      cursor: pointer;
+      text-align: center;
+      animation: watch__notes__matters 900ms normal;
+
+      &:hover {
+        background: #17202a;
+        color: #eaecee;
+      }
+    }
+  }
+
+  .notes__all {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    overflow: hidden;
+    padding-top: 50px;
+
+    @media (max-width: 850px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .notes__container__loader {
+      width: 100vw;
+      min-height: 400px;
+      z-index: 10;
+      @include flex(row, center, center);
+    }
+  }
+}
+
+@keyframes watch__avatar {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 100;
+  }
+}
+
+@keyframes watch__notes__welcome__text {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 100;
+  }
+}
+
+@keyframes watch__notes__matters {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 100;
+  }
+}

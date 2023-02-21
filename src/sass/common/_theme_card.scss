@@ -1,0 +1,98 @@
+.note {
+  width: 100%;
+  min-height: 120px;
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  overflow: hidden;
+  animation: watch__note__card 0.5s normal;
+  transition: transform 400ms;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+
+  .note-left {
+    width: 40%;
+    height: 100%;
+    background: #17202a;
+    @include flex(column, space-between, flex-start, 10px);
+    padding: 10px;
+    overflow: hidden;
+
+    .note-container-data {
+      & > h4 {
+        color: #ffffff8e;
+        font-size: 12px;
+        font-family: $font-title-2;
+      }
+
+      & > h1 {
+        width: 100%;
+        text-align: center;
+        font-size: 25px;
+        color: #eaecee;
+        font-family: $font-title-2;
+        margin-left: 5px;
+
+        @media (max-width: 588px) {
+          font-size: 16px;
+        }
+      }
+    }
+
+    & > p {
+      color: #fff;
+      font-size: 12px;
+      font-family: $font-title-2;
+    }
+  }
+  .note-right {
+    width: 60%;
+    height: 100%;
+    padding: 10px;
+    @include flex(column, space-between, flex-start, 10px);
+
+    .note-container-tags {
+      @include flex(row, flex-start, center, 5px, wrap);
+      width: 100%;
+
+      .note-tag {
+        font-size: 10px;
+        font-family: $font-title-2;
+        background: #3498db;
+        padding: 3px;
+        border-radius: 12px;
+        color: #eaecee;
+      }
+    }
+
+    .note-container-data {
+      @include flex(row, space-between, flex-end, 5px);
+      width: 100%;
+
+      .note-name {
+        font-family: $font-title-2;
+        font-size: 17px;
+      }
+      .note-date {
+        color: rgba($color: #000000, $alpha: 0.6);
+        font-size: 13px;
+        min-width: 100px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@keyframes watch__note__card {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 100;
+  }
+}

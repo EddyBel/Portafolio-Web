@@ -12,14 +12,14 @@
 
   .options__navigations__container {
     @include flex(row, flex-end, center, 10px);
-    @media (max-width: 457px) {
+    @media (max-width: 600px) {
       display: none;
     }
   }
 
   #navbar__button__burguer {
     display: none;
-    @media (max-width: 457px) {
+    @media (max-width: 600px) {
       display: block;
     }
   }

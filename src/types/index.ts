@@ -7,6 +7,9 @@ import {
   YoAPIBiographyContent,
   YoAPIProyectContent,
   YoAPIProyects,
+  YoAPIAllNotes,
+  YoAPINote,
+  YoAPIContentNote,
 } from "./yo_api.types";
 
 export type {
@@ -20,4 +23,7 @@ export type {
   YoAPIBiographyContent,
   YoAPIProyectContent,
   YoAPIProyects,
+  YoAPIAllNotes,
+  YoAPINote,
+  YoAPIContentNote,
 };
