@@ -135,7 +135,7 @@ export function Form() {
           Name
         </InputBox>
         <InputBox type="text" isRequired={true} setState={setLastName}>
-          Username
+          Last name
         </InputBox>
       </div>
       <div className="container_formulary_doble_input">
