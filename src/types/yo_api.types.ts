@@ -15,8 +15,9 @@ export type YoAPIBiography = {
 
 export type YoAPIProyectContent = {
   name: string;
-  background: string;
   description: string;
+  background: string;
+  tags: string[];
   github: string;
   web?: string;
 };

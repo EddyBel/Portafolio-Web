@@ -29,6 +29,7 @@ export type CardProyectProps = {
   title: string;
   description: string;
   background: string;
+  tags: string[];
   github: string;
   web: string | undefined;
   direction?: boolean;

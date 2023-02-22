@@ -1,0 +1,346 @@
+.card__proyect {
+  @include flex(row, space-between, center);
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  transition: all 400ms;
+
+  @media (max-width: 767px) {
+    padding: 0px;
+  }
+
+  @media (max-width: 519px) {
+    min-height: 400px;
+  }
+
+  .card__proyect__img__proyect {
+    width: 60%;
+    max-width: 800px;
+    // max-height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+
+    @media (max-width: 767px) {
+      background: none;
+      box-shadow: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (max-width: 704px) {
+      min-height: 400px;
+    }
+  }
+
+  .card__proyect__data__container {
+    @include flex(column, center, flex-end, 10px);
+    min-height: 400px;
+    width: 40%;
+
+    @media (max-width: 767px) {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #17202ab4;
+      @include flex(column, center, center, 10px);
+    }
+
+    @media (max-width: 611px) {
+      @include flex(column, center, center, 5px);
+    }
+
+    .card__proyect__data__container__description {
+      min-width: 550px;
+      min-height: 130px;
+      background: #fff;
+      color: #eaecee;
+      padding: 20px;
+      border-radius: 12px;
+      z-index: 10;
+      transition: all 300ms;
+      @include flex(row, center, center);
+      color: #000;
+      font-family: $font-title-2;
+      font-size: 13px;
+
+      @media (max-width: 1005px) {
+        min-width: 450px;
+      }
+
+      @media (max-width: 870px) {
+        min-width: 400px;
+      }
+
+      @media (max-width: 767px) {
+        background: none;
+        box-shadow: none;
+        width: 100%;
+        text-align: center;
+        @include flex(column, center, center, 10px);
+        padding: 10px;
+        min-height: 0px !important;
+        min-width: 0px !important;
+        color: #fff;
+      }
+
+      @media (max-width: 611px) {
+        font-size: 14px;
+        height: auto;
+      }
+    }
+
+    .card__proyect__data__subtitle {
+      color: #85c1e9;
+      font-size: 17px;
+      font-family: $font-title-2;
+
+      @media (max-width: 611px) {
+        font-size: 14px;
+      }
+    }
+
+    .card__proyect__data__name {
+      color: #fff;
+      font-size: 40px;
+      mix-blend-mode: difference;
+      font-family: $font-title-2;
+      text-align: end;
+      width: 100%;
+
+      @media (max-width: 611px) {
+        font-size: 28px;
+      }
+
+      @media (max-width: 767px) {
+        text-align: center;
+      }
+    }
+
+    .card__proyect__data__container__tags {
+      @include flex(row, center, center, 10px, wrap);
+      font-family: $font-title-2;
+      color: #000;
+      font-size: 16px;
+
+      @media (max-width: 767px) {
+        color: #f1f1f1;
+      }
+    }
+
+    .card__proyect__data__container__buttons {
+      margin-top: 40px;
+      @include flex(row, center, center, 15px);
+
+      .button__proyect__card {
+        transition: all 400ms;
+        &:hover {
+          transform: translateY(-3px);
+        }
+      }
+    }
+  }
+}
+
+.card__proyect__right {
+  @include flex(row, space-between, center);
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  transition: all 400ms;
+
+  @media (max-width: 767px) {
+    padding: 0px;
+  }
+
+  @media (max-width: 519px) {
+    min-height: 400px;
+  }
+
+  .card__proyect__img__proyect {
+    width: 60%;
+    max-width: 800px;
+    // max-height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+
+    @media (max-width: 767px) {
+      background: none;
+      box-shadow: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (max-width: 704px) {
+      min-height: 400px;
+    }
+  }
+
+  .card__proyect__data__container {
+    @include flex(column, center, flex-start, 10px);
+    min-height: 400px;
+    width: 40%;
+
+    @media (max-width: 767px) {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #17202ab4;
+      @include flex(column, center, center, 10px);
+    }
+
+    @media (max-width: 611px) {
+      @include flex(column, center, center, 5px);
+    }
+
+    .card__proyect__data__container__description {
+      min-width: 550px;
+      min-height: 130px;
+      background: #fff;
+      color: #eaecee;
+      padding: 20px;
+      border-radius: 12px;
+      z-index: 10;
+      transition: all 300ms;
+      @include flex(row, center, center);
+      color: #000;
+      font-family: $font-title-2;
+      font-size: 13px;
+
+      @media (max-width: 1005px) {
+        min-width: 450px;
+      }
+
+      @media (max-width: 870px) {
+        min-width: 400px;
+      }
+
+      @media (max-width: 767px) {
+        background: none;
+        box-shadow: none;
+        width: 100%;
+        text-align: center;
+        @include flex(column, center, center, 10px);
+        padding: 10px;
+        min-height: 0px !important;
+        min-width: 0px !important;
+        color: #ffffffd7;
+      }
+
+      @media (max-width: 611px) {
+        font-size: 14px;
+        height: auto;
+      }
+    }
+
+    .card__proyect__data__subtitle {
+      color: #85c1e9;
+      font-size: 17px;
+      font-family: $font-title-2;
+
+      @media (max-width: 611px) {
+        font-size: 14px;
+      }
+    }
+
+    .card__proyect__data__name {
+      color: #fff;
+      font-size: 40px;
+      mix-blend-mode: difference;
+      font-family: $font-title-2;
+      padding: 5px;
+      text-align: start;
+      width: 100%;
+
+      @media (max-width: 611px) {
+        font-size: 28px;
+      }
+
+      @media (max-width: 767px) {
+        text-align: center;
+      }
+    }
+
+    .card__proyect__data__container__tags {
+      @include flex(row, center, center, 10px, wrap);
+      font-family: $font-title-2;
+      color: #000;
+      font-size: 16px;
+
+      @media (max-width: 767px) {
+        color: #f1f1f1;
+      }
+    }
+
+    .card__proyect__data__container__buttons {
+      margin-top: 40px;
+      @include flex(row, center, center, 15px);
+
+      .button__proyect__card {
+        transition: all 400ms;
+        &:hover {
+          transform: translateY(-3px);
+        }
+      }
+    }
+  }
+}
+
+.cssbuttons-io {
+  position: relative;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  border-radius: 0.8em;
+  border: none;
+  background: linear-gradient(to right, #8e2de2, #4a00e0);
+  color: ghostwhite;
+  overflow: hidden;
+  cursor: pointer;
+
+  svg {
+    // width: 17px;
+    // height: 17px;
+    margin-right: 0.5em;
+  }
+  span {
+    position: relative;
+    z-index: 10;
+    transition: color 0.4s;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px 10px 15px;
+  }
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    content: "";
+    background: #000;
+    width: 120%;
+    left: -10%;
+    transform: skew(30deg);
+    transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+  }
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  &:hover {
+    &::before {
+      transform: translate3d(100%, 0, 0);
+    }
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+}

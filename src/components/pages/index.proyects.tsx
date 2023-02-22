@@ -1,5 +1,7 @@
-import { BookLoader } from "../common/index";
+import { BookLoader, CardProyect } from "../common/index";
 import { useMyAPI } from "../../hook/useContext";
+
+let direction = true;
 
 export function Proyects() {
   const myAPI = useMyAPI();
@@ -17,32 +19,21 @@ export function Proyects() {
         {!projects ? (
           <BookLoader />
         ) : (
-          projects.map((project) => (
-            <a
-              href={project.github}
-              className="card__project"
-              key={`card__project__${project.github}`}
-            >
-              <img
-                src={project.background}
-                alt=""
-                className="project__background"
+          projects.map((project, index) => {
+            direction = !direction;
+            return (
+              <CardProyect
+                direction={direction}
+                background={project.background}
+                title={project.name}
+                description={shortenString(project.description, 230)}
+                tags={project.tags}
+                github={project.github}
+                web={project.web}
+                key={project.github}
               />
-              <div className="project__background__efect"></div>
-              <div className="project__container__buttons">
-                <button>
-                  <span>Button</span>
-                  <i></i>
-                </button>
-              </div>
-              <h1 className="name__background">{project.name}</h1>
-              <div className="project__container__data">
-                <h5 className="project__description">
-                  {shortenString(project.description, 80)}
-                </h5>
-              </div>
-            </a>
-          ))
+            );
+          })
         )}
       </div>
     </section>

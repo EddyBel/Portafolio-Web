@@ -1,79 +1,89 @@
 import { CardProyectProps } from "../../types/index";
 import { Github, Web } from "./svg";
 
-export function CardProyect({
-  title,
-  description,
-  background,
-  github,
-  web,
-  direction = true,
-}: CardProyectProps) {
-  const url__background: string = background;
-
-  return direction ? (
-    <div className="card__main__proyect">
-      <div className="card__main__proyect__content">
-        <h1 className="card__main__proyect__content__title">{title}</h1>
-        <p className="card__main__proyect__content__description">
-          {description}
-        </p>
-        <div className="card__main__proyect__content__buttons">
-          <a
-            href={github}
-            className="card__main__proyect__content__buttons__direccion"
-          >
-            <Github width="20px" height="20px" /> Github
-          </a>
-          {!web ? (
-            <></>
-          ) : (
-            <a
-              href={web}
-              className="card__main__proyect__content__buttons__direccion"
-            >
-              <Web width="20px" height="20px" color="#85C1E9" />
-              Web
+export function CardProyect(props: CardProyectProps) {
+  if (props.direction)
+    return (
+      <div className="card__proyect">
+        <img
+          src={props.background}
+          alt={props.title}
+          className="card__proyect__img__proyect"
+        />
+        <div className="card__proyect__data__container">
+          <h4 className="card__proyect__data__subtitle">Featured Project</h4>
+          <h1 className="card__proyect__data__name">{props.title}</h1>
+          <p className="card__proyect__data__container__description">
+            {props.description}
+          </p>
+          <div className="card__proyect__data__container__tags">
+            {!props.tags ? (
+              <></>
+            ) : (
+              props.tags.map((tag) => (
+                <h5 key={`tag-proyect-${tag}-${Math.random()}`}>{tag}</h5>
+              ))
+            )}
+          </div>
+          <div className="card__proyect__data__container__buttons">
+            <a href={props.github} className="cssbuttons-io">
+              <span>
+                <Github width="20px" height="20px" color="#000" /> Github
+              </span>
             </a>
-          )}
+            {!props.web ? (
+              <></>
+            ) : (
+              <a href={props.web} className="cssbuttons-io">
+                <span>
+                  <Web width="20px" height="20px" color="#fff" /> Web
+                </span>
+              </a>
+            )}
+          </div>
         </div>
       </div>
-      <div
-        className="card__main__proyect__img"
-        style={{ backgroundImage: `url(${url__background})` }}
-      ></div>
-    </div>
-  ) : (
-    <div className="card__main__proyect">
-      <div
-        className="card__main__proyect__img"
-        style={{ backgroundImage: `url(${url__background})` }}
-      ></div>
-      <div className="card__main__proyect__content">
-        <h1 className="card__main__proyect__content__title">{title}</h1>
-        <p className="card__main__proyect__content__description">
-          {description}
-        </p>
-        <div className="card__main__proyect__content__buttons">
-          <a
-            href={github}
-            className="card__main__proyect__content__buttons__direccion"
-          >
-            <Github width="20px" height="20px" /> Github
-          </a>
-          {!web ? (
-            <></>
-          ) : (
-            <a
-              href={web}
-              className="card__main__proyect__content__buttons__direccion"
-            >
-              <Web width="20px" height="20px" color="#85C1E9" />
-              Web
+    );
+  else
+    return (
+      <div className="card__proyect__right">
+        <div className="card__proyect__data__container">
+          <h4 className="card__proyect__data__subtitle">Featured Project</h4>
+          <h1 className="card__proyect__data__name">{props.title}</h1>
+          <p className="card__proyect__data__container__description">
+            {props.description}
+          </p>
+          <div className="card__proyect__data__container__tags">
+            {!props.tags ? (
+              <></>
+            ) : (
+              props.tags.map((tag) => (
+                <h5 key={`tag-proyect-${tag}-${Math.random()}`}>{tag}</h5>
+              ))
+            )}
+          </div>
+          <div className="card__proyect__data__container__buttons">
+            <a href={props.github} className="cssbuttons-io">
+              <span>
+                <Github width="20px" height="20px" color="#000" /> Github
+              </span>
             </a>
-          )}
+            {!props.web ? (
+              <></>
+            ) : (
+              <a href={props.web} className="cssbuttons-io">
+                <span>
+                  <Web width="20px" height="20px" color="#fff" /> Web
+                </span>
+              </a>
+            )}
+          </div>
         </div>
+        <img
+          src={props.background}
+          alt={props.title}
+          className="card__proyect__img__proyect"
+        />
       </div>
-    </div>
-  );
+    );
 }

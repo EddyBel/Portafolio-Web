@@ -11,7 +11,7 @@ export default defineConfig({
     port: 5050,
     proxy: {
       "^/notes/.*$": {
-        target: "https://eduardorangel.netlify.app", // cambia la URL base a tu aplicación
+        target: "http://localhost:5050/", // cambia la URL base a tu aplicación
         changeOrigin: true,
         rewrite: (path) => "/index.html",
       },
