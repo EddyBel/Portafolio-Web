@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { sendMessageFromAPI } from "../../service/myApi.api";
 import { getCookie } from "../../util/cookies";
+import { Animations } from "../../lib/animations";
 import {
   Alert,
   Spinner,
@@ -9,6 +10,8 @@ import {
   LinesLoader,
 } from "../common/index";
 import { Alert as IconAlert, ArrowCheck } from "../common/svg";
+
+let animation = new Animations();
 
 export function Form() {
   // These states store the value of the inputs at each point in time.
@@ -122,6 +125,24 @@ export function Form() {
     // It is assigned to the status that the message was sent correctly.
     setStatusSend(true);
   };
+
+  useEffect(() => {
+    let inputs = document.querySelectorAll(".inputBoxContainer");
+    let textarea = document.querySelector(
+      ".form__contact__input_text_area"
+    ) as Element;
+    let cleanAnimation = animation.showElementWithScrollUpAndDown(inputs, 500);
+    let cleanArea = animation.showElementWithScrollUpAndDown(
+      textarea,
+      500,
+      "down"
+    );
+
+    return () => {
+      cleanAnimation();
+      cleanArea();
+    };
+  }, []);
 
   return (
     <form className="formulary" action="Formulary">

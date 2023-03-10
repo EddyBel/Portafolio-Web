@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
-import { SearchEngine, CardRepo, Spinner } from "../components/common/index";
+import { SearchEngine, BookLoader } from "../components/common/index";
+import { ContorGithub } from "../components/common/svg";
 import { useGithub } from "../hook/useContext";
 import { GITHUB_REPO } from "../types/github_api.types";
+import { Animations } from "../lib/animations";
+
+const animation = new Animations();
 
 export const Repositories = () => {
   const [repositories, setRepositories] = useState<GITHUB_REPO[]>();
@@ -40,9 +44,28 @@ export const Repositories = () => {
     }
   };
 
+  const formatSize = (size: number) => {
+    let megas = Math.round(size / 100);
+    if (megas == 0) return `${size} Kb`;
+    else return `${megas} Mb`;
+  };
+
+  const formatLang = (lang: string) => {
+    if (lang) return lang.toUpperCase();
+    else return "Repository".toUpperCase();
+  };
+
   useEffect(() => {
     if (repos) setRepositories(repos);
   }, [repos]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      const repos = document.querySelectorAll(".repo__data");
+      let removeEvent = animation.showElementWithScrollUpAndDown(repos, 620);
+      return () => removeEvent();
+    }, 1000);
+  }, [repositories]);
 
   return (
     <div className="repositories">
@@ -58,23 +81,38 @@ export const Repositories = () => {
           placeholder="✏️ Enter the name of the repository or its technology"
           onChange={onChangeHanddleSearchRepo}
         />
-        <div className="repositories__list">
-          {!repositories ? (
-            <Spinner />
-          ) : (
-            repositories.map((repo) => (
-              <CardRepo
-                name={repo.name}
-                description={repo.description}
-                meta={repo.topics}
-                path={repo.html_url}
-                language={repo.language}
-                id={repo.id}
-                key={repo.id}
-              />
-            ))
-          )}
-        </div>
+        {!repositories ? (
+          <div className="container__loader">
+            <BookLoader />
+          </div>
+        ) : (
+          <table className="table-repos">
+            <thead>
+              <tr className="repo__head">
+                <th className="repo__head__size">Size</th>
+                <th className="repo__head__name">Name</th>
+                <th className="repo__head__lang">Lang</th>
+                <th className="repo__head__link">Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              {repositories.map((repo) => (
+                <tr className="repo__data" key={`ìd-repo-${repo.id}`}>
+                  <th className="repo__data__size">{formatSize(repo.size)}</th>
+                  <th className="repo__data__name">{repo.name}</th>
+                  <th className="repo__data__lang">
+                    {formatLang(repo.language)}
+                  </th>
+                  <th>
+                    <a href={repo.html_url} title={repo.html_url}>
+                      <ContorGithub height="20px" width="20px" color="#000" />
+                    </a>
+                  </th>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import {
   stringToStar,
   validateToDataFromDict,
   getExtension,
+  shuffleArray,
 } from "./format";
 
 export {
@@ -19,4 +20,5 @@ export {
   stringToStar,
   validateToDataFromDict,
   getExtension,
+  shuffleArray,
 };

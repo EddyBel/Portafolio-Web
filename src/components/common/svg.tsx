@@ -663,3 +663,50 @@ export function ArrowCheck(props: PropsSVG) {
     </svg>
   );
 }
+
+export function Folder(props: PropsSVG) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={props.width}
+      height={props.height}
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke={props.color}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M3 17V7a2 2 0 012-2h4.586a1 1 0 01.707.293L12 7h7a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"
+      ></path>
+    </svg>
+  );
+}
+
+export function ContorGithub(props: PropsSVG) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={props.width}
+      height={props.height}
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke={props.color}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M9.292 21v-2.56l.034-1.818a2.57 2.57 0 01.64-1.53.026.026 0 00-.017-.043v0C7.526 14.745 5 13.723 5 9.267a4.718 4.718 0 011.075-3.082v0a.144.144 0 00.024-.142 4.531 4.531 0 01.114-2.964.1.1 0 01.074-.064v0c.215-.038 1.083-.09 2.746 1.058l.158.111v0a.155.155 0 00.132.023l.005-.001c.089-.025.178-.05.268-.072a9.747 9.747 0 015.062.068l.006.002a.183.183 0 00.156-.027v0l.147-.104c1.659-1.145 2.522-1.097 2.738-1.058v0a.102.102 0 01.076.064l.005.013a4.507 4.507 0 01.113 2.955v0a.152.152 0 00.032.145l.065.08A4.718 4.718 0 0119 9.267c0 4.48-2.544 5.476-4.979 5.748v0a.017.017 0 00-.01.029l.01.012c.246.274.437.598.56.954.13.372.182.77.154 1.165V21"
+      ></path>
+      <path
+        stroke={props.color}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M4 17a2.452 2.452 0 011.784 1.208 2.5 2.5 0 001.495 1.196 2.483 2.483 0 001.9-.218"
+      ></path>
+    </svg>
+  );
+}

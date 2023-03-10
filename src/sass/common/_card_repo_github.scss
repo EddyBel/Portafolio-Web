@@ -1,0 +1,46 @@
+.github__card {
+  background: #0c1014;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  max-height: 400px;
+  transition: all 400ms;
+  @include flex(column, space-between, center);
+
+  &:hover {
+    .github__card__proyect__title {
+      color: #d6eaf8;
+    }
+  }
+
+  .github__card__proyect {
+    @include flex(row, space-between, center);
+    width: 100%;
+  }
+
+  .github__card__proyect__title {
+    font-size: 35px;
+    font-family: $font-title-2;
+    color: #fff;
+    width: 100%;
+    transition: all 300ms;
+  }
+
+  .github__card__proyect__description {
+    font-size: 13px;
+    font-family: $font-title-2;
+    color: #ffffffbd;
+    width: 100%;
+    transition: all 300ms;
+  }
+
+  .github__card__tags {
+    width: 100%;
+    margin-top: 10px;
+    @include flex(row, flex-start, center, 10px, wrap);
+
+    .github__card__tag {
+      color: #ffffff70;
+    }
+  }
+}

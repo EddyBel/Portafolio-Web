@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { typingText } from "../../util/index";
-import { ButtonLine, ButtonShadown, ButtonLearn } from "../common/index";
 import { useGithub } from "../../hook/useContext";
 
 export function MainText() {
@@ -15,6 +14,7 @@ export function MainText() {
   return (
     <section className="home__main">
       <div className="home__main__circle__center"></div>
+      {/* <div className="gooey"></div> */}
 
       <h1 className="home__main__title">
         <span className="greeting one">HI!</span>

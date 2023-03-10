@@ -8,6 +8,7 @@ import {
 } from "./components/layout/index";
 import { useGithub, useMyAPI } from "./hook/useContext";
 import { LoadingPage } from "./pages/loading";
+import { Tracker } from "./components/common/index";
 
 function App() {
   const contextGithub = useGithub();
@@ -16,6 +17,7 @@ function App() {
   return (
     <div className="App">
       {/* <LoadingPage /> */}
+      {/* <Tracker /> */}
       <Menu />
       <UserGithub />
       <NavOptions />

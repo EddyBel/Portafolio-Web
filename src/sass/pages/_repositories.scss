@@ -55,23 +55,88 @@
     margin: auto;
     margin-top: 50px;
     border-radius: 30px;
-    box-shadow: 0px 10px 20px 10px rgba($color: #000000, $alpha: 0.2);
+    // box-shadow: 0px 10px 20px 10px rgba($color: #000000, $alpha: 0.2);
     padding: 20px;
-    animation: repositories__container__watch 400ms normal;
+    animation: repositories__container__watch 900ms normal;
+
+    .container__loader {
+      padding: 10px;
+      width: 100%;
+      margin-top: 80px;
+      @include flex(row, center, center);
+    }
+
+    .table-repos {
+      width: 100%;
+      margin-top: 50px;
+      transition: all 400ms;
+      border-collapse: collapse;
+      border-radius: 12px;
+      overflow: hidden;
+
+      thead {
+        // background: #000;
+
+        tr {
+          background: #000;
+          color: #fff;
+
+          th {
+            padding: 10px;
+            font-size: 14px;
+            font-family: $font-title-2;
+          }
+
+          .repo__head__size {
+            @media (max-width: 440px) {
+              display: none;
+            }
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          // border-bottom: 2px solid rgba($color: #000000, $alpha: 0.4);
+          transition: all 400ms;
+          animation: repositories__container__watch 600ms normal;
+
+          &:hover {
+            background: #cfcfcf;
+          }
+
+          th {
+            padding: 10px;
+            font-size: 14px;
+            font-family: $font-title-2;
+          }
+
+          .repo__data__name {
+            text-align: start;
+          }
+
+          .repo__data__lang {
+            text-align: start;
+          }
+
+          .repo__data__size {
+            @media (max-width: 440px) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
 
     @keyframes repositories__container__watch {
       0% {
         transform: translateY(100%);
+        opacity: 0;
       }
       100% {
         transform: translateY(0%);
+        opacity: 100;
       }
-    }
-
-    .repositories__list {
-      // padding-top: 20px;
-      padding: 20px;
-      @include flex(column, center, center, 20px);
     }
   }
 }

@@ -14,6 +14,8 @@ import { BookLoader } from "./book_loader";
 import { InputBox } from "./inputs";
 import { LinesLoader } from "./lines_loader";
 import { NoteCard } from "./note";
+import { Tracker } from "./tracker";
+import { CardGithub } from "./card_github_proyect";
 
 export {
   ButtonShadown,
@@ -30,4 +32,6 @@ export {
   InputBox,
   LinesLoader,
   NoteCard,
+  Tracker,
+  CardGithub,
 };

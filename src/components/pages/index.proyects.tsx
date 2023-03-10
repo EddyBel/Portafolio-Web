@@ -1,11 +1,30 @@
+import { useEffect } from "react";
 import { BookLoader, CardProyect } from "../common/index";
+import { Animations } from "../../lib/animations";
 import { useMyAPI } from "../../hook/useContext";
 
+let animation = new Animations();
 let direction = true;
 
 export function Proyects() {
   const myAPI = useMyAPI();
   const projects = myAPI?.proyects?.body;
+
+  useEffect(() => {
+    let projects_left = document.querySelectorAll(".card__proyect");
+    let projects_right = document.querySelectorAll(".card__proyect__right");
+    let cleanAnimation_left =
+      animation.showElementWithScrollLeftAndRight(projects_left);
+    let cleanAnimation_right = animation.showElementWithScrollLeftAndRight(
+      projects_right,
+      350,
+      "right"
+    );
+    return () => {
+      cleanAnimation_left();
+      cleanAnimation_right();
+    };
+  }, [projects]);
 
   return (
     <section className="proyects">

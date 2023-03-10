@@ -65,3 +65,18 @@ export const validateToDataFromDict = (data: any) => {
     date,
   };
 };
+
+/**
+ * Reordena un array de manera aleatoria utilizando el algoritmo de Fisher-Yates.
+ *
+ * @param array - El array a reordenar.
+ * @returns El array reordenado aleatoriamente.
+ * @typeParam T - El tipo de los elementos del array.
+ */
+export function shuffleArray<T>(array: T[]): T[] {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
