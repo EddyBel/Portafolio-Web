@@ -14,20 +14,20 @@ export function MoreProyects() {
 
   const github = useGithub();
   const projects = github?.repos;
+  const reorderRepos = github?.reorderRepositoriesByCommit;
 
   useEffect(() => {
-    if (projects) {
-      const newArray = shuffleArray(projects);
-      setRepos(newArray);
-    }
+    if (projects && reorderRepos)
+      reorderRepos(6).then((response: GITHUB_REPO[]) => setRepos(response));
   }, [projects]);
 
   useEffect(() => {
-    setTimeout(() => {
-      let elements = document.querySelectorAll(".github__card");
-      const removeEffect = animations.showElementWithScrollUpAndDown(elements);
-      return () => removeEffect();
-    }, 2000);
+    let elements = document.querySelectorAll(".github__card");
+    const removeEffect = animations.showElementWithScrollUpAndDown(
+      elements,
+      550
+    );
+    return () => removeEffect();
   }, [repos]);
 
   return (

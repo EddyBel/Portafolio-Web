@@ -2,7 +2,6 @@
   background: #0b1014;
   min-height: 140vh;
   max-width: 100vw;
-  // width: 100vw;
   padding-top: 300px;
   padding-bottom: 300px;
   @include flex(column, center, center, 30px);
@@ -10,8 +9,6 @@
   position: relative;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
 
   .home__body__about__text__scrolling {
     @include flex(row, center, center);

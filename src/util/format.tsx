@@ -1,3 +1,5 @@
+import { GITHUB_REPO } from "../types/index";
+
 export const stringToStar = (level: string) => {
   const newLevel = level.toLowerCase();
 

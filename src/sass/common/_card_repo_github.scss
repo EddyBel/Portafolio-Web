@@ -24,6 +24,10 @@
     color: #fff;
     width: 100%;
     transition: all 300ms;
+
+    @media (max-width: 420px) {
+      font-size: 20px;
+    }
   }
 
   .github__card__proyect__description {
@@ -32,6 +36,10 @@
     color: #ffffffbd;
     width: 100%;
     transition: all 300ms;
+
+    @media (max-width: 420px) {
+      font-size: 9px;
+    }
   }
 
   .github__card__tags {
@@ -41,6 +49,10 @@
 
     .github__card__tag {
       color: #ffffff70;
+
+      @media (max-width: 420px) {
+        font-size: 9px;
+      }
     }
   }
 }
