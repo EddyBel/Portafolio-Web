@@ -13,11 +13,11 @@
 
       @keyframes repositories__title__watch {
         0% {
-          transform: translateX(-100%);
+          transform: translateY(-50px);
           opacity: 0;
         }
         100% {
-          transform: translateX(0%);
+          transform: translateY(0%);
           opacity: 100;
         }
       }
@@ -35,11 +35,11 @@
 
       @keyframes repositories__description__watch {
         0% {
-          transform: translateX(100%);
+          transform: translateY(-50px);
           opacity: 0;
         }
         100% {
-          transform: translateX(0%);
+          transform: translateY(0%);
           opacity: 100;
         }
       }
@@ -64,6 +64,30 @@
       width: 100%;
       margin-top: 80px;
       @include flex(row, center, center);
+    }
+
+    .message_not_found__repos {
+      width: 100%;
+      text-align: center;
+      margin-top: 70px;
+      font-family: $font-title-2;
+      font-size: 40px;
+      animation: watch_text_not_found 900ms normal;
+
+      @media (max-width: 580px) {
+        font-size: 20px;
+      }
+
+      @keyframes watch_text_not_found {
+        0% {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0px);
+          opacity: 100;
+        }
+      }
     }
 
     .table-repos {
@@ -116,7 +140,7 @@
           }
 
           .repo__data__lang {
-            text-align: start;
+            text-align: center;
           }
 
           .repo__data__size {

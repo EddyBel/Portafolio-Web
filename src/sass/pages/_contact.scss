@@ -20,6 +20,7 @@
     @include flex(column, center, center, 10px);
     padding: 20px;
     border-radius: 23px;
+    transition: all 300ms;
 
     .contact__content__title {
       font-size: 50px;

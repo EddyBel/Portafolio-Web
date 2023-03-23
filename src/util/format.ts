@@ -1,5 +1,10 @@
 import { GITHUB_REPO } from "../types/index";
 
+/**
+ * Modifies the string to return strellas according to the string.
+ * @param {string} level  String to be used for text formatting
+ * @returns {string} Returning stars
+ */
 export const stringToStar = (level: string) => {
   const newLevel = level.toLowerCase();
 
@@ -11,6 +16,7 @@ export const stringToStar = (level: string) => {
   return level;
 };
 
+// Converts a string separated by "," to an array
 export const stringToArray = (tags: string) => {
   return tags.split(", ");
 };
@@ -27,6 +33,11 @@ export const getExtension = (text: string) => {
   return { name, extension };
 };
 
+/**
+ * With this function you can search for specific data of an object that may have different property names.
+ * @param {Object} data Object where the values will be searched
+ * @returns {Object} Returns an object with the values obtained
+ */
 export const validateToDataFromDict = (data: any) => {
   const level = data.level
     ? data.level
@@ -82,3 +93,25 @@ export function shuffleArray<T>(array: T[]): T[] {
   }
   return array;
 }
+
+/**
+ * This function returns a number representing the size of a file in Megabytes.
+ * @param {number} size Number representing the file size.
+ * @returns {string} Returns the already formatted size.
+ */
+export const formatSize = (size: number) => {
+  let megas = Math.round(size / 100);
+  if (megas == 0) return `${size} Kb`;
+  else return `${megas} Mb`;
+};
+
+/**
+ * This function takes a programming language and returns the string but in upper case.
+ * If a language is not passed then the string "Repository" is returned in upper case.
+ * @param {string | null} lang Language to be formatted
+ * @return {string} Language formatted correctly
+ */
+export const formatLang = (lang: string) => {
+  if (lang) return lang.toUpperCase();
+  else return "Repository".toUpperCase();
+};

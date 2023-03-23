@@ -4,35 +4,48 @@ import { ContorGithub } from "../components/common/svg";
 import { useGithub } from "../hook/useContext";
 import { GITHUB_REPO } from "../types/github_api.types";
 import { Animations } from "../lib/animations";
+import { formatLang, formatSize } from "../util/index";
 
 const animation = new Animations();
 
 export const Repositories = () => {
+  /** This state will manage the list of repositories and will be the ones that will be rendered on the web. */
   const [repositories, setRepositories] = useState<GITHUB_REPO[]>();
 
+  // Extracts the global status data from github.
+  // Among the data needed are the repositories obtained from the github API.
   const github__state = useGithub();
   const repos = github__state?.repos;
 
+  /** This function is in charge of searching through the list of repositories. */
   const onChangeHanddleSearchRepo = (e: any) => {
+    // Extract the value from the input.
+    // Convert the value to lowercase, this will be used to search the repositories.
+    // Creates an empty list where the found repositories will be stored.
     let value: string = e.target.value;
     let newValue: string = value.toLowerCase();
     let newRepos: GITHUB_REPO[] = [];
 
+    // If there is no value to search for or it is an empty string then get the complete repositories.
+    // If not then you can start the search.
     if (value === "" || value === null) {
       if (repos) setRepositories(repos);
     } else {
       repos?.map((repo) => {
+        // Get the repository name and pass it in aminuscules.
+        // Get the repository language and convert it to lowercase.
+        // Then validate that the repository name contains what was typed as input, also validate if it is also included in the repo language and finally validate if the repository is already in the list of repositories fetched.
         let newName = repo.name.toLowerCase();
         let newLanguage = !repo.language
           ? "repository"
           : repo.language.toLowerCase();
-
-        if (
+        let validateNameLangAndNotRepo =
           newName.includes(newValue) ||
-          (newLanguage.includes(newValue) && !newRepos.includes(repo))
-        )
-          newRepos.push(repo);
+          (newLanguage.includes(newValue) && !newRepos.includes(repo));
+        if (validateNameLangAndNotRepo) newRepos.push(repo);
 
+        // It goes through the list of tagsnames in the repository.
+        // If the input is contained in the tagname and also the repo has not been assigned to the repository list then you can add it to the repository list.
         repo.topics.map((tag) => {
           let newTag = tag.toLowerCase();
           if (newTag.includes(newValue) && !newRepos.includes(repo))
@@ -40,30 +53,43 @@ export const Repositories = () => {
         });
       });
 
+      // Adds the obtained repositories to the list of repositories
       setRepositories(newRepos);
     }
   };
 
-  const formatSize = (size: number) => {
-    let megas = Math.round(size / 100);
-    if (megas == 0) return `${size} Kb`;
-    else return `${megas} Mb`;
-  };
-
-  const formatLang = (lang: string) => {
-    if (lang) return lang.toUpperCase();
-    else return "Repository".toUpperCase();
-  };
-
+  // If the repositories are found perfectly then save them in a local state
   useEffect(() => {
     if (repos) setRepositories(repos);
   }, [repos]);
 
+  // Animations are defined here
   useEffect(() => {
     setTimeout(() => {
+      // Create the animation that will be used by all repositories.
+      // the funcino returns a function that removes the event that uses the animation.
+      // Get the height of the window and subtract an action margin.
+      // Run the animation function with the new distance value.
       const repos = document.querySelectorAll(".repo__data");
-      let removeEvent = animation.showElementWithScrollUpAndDown(repos, 620);
-      return () => removeEvent();
+      const animationRepo = () => {
+        const height = window.innerHeight - 20;
+        const removeEvent = animation.showElementWithScrollUpAndDown(
+          repos,
+          height
+        );
+        return () => removeEvent();
+      };
+
+      // Executes the animation function at the start of the code.
+      // Runs the animation function every time the window is resized.
+      const cleanAnimation = animationRepo();
+      window.addEventListener("resize", animationRepo);
+
+      // Returns a function that executes the functions to eliminate the events.
+      return () => {
+        cleanAnimation();
+        window.removeEventListener("resize", animationRepo);
+      };
     }, 1000);
   }, [repositories]);
 
@@ -85,6 +111,8 @@ export const Repositories = () => {
           <div className="container__loader">
             <BookLoader />
           </div>
+        ) : repositories.length === 0 ? (
+          <h1 className="message_not_found__repos">No repository found 😥</h1>
         ) : (
           <table className="table-repos">
             <thead>
@@ -103,7 +131,7 @@ export const Repositories = () => {
                   <th className="repo__data__lang">
                     {formatLang(repo.language)}
                   </th>
-                  <th>
+                  <th className="repo__data__link">
                     <a href={repo.html_url} title={repo.html_url}>
                       <ContorGithub height="20px" width="20px" color="#000" />
                     </a>

@@ -34,10 +34,9 @@ export function MainText() {
 
       <div className="home__main__decoration__img__one"></div>
       <div className="home__main__decoration__img__two"></div>
-      <a href="#ABOUT" className="scroll_indication">
+      <a href="#ABOUT" className="scroll_indication" title="More info">
         <div className="scroll"> </div>
       </a>
-      {/* <div className="home__main__decoration__img__tree"></div> */}
     </section>
   );
 }

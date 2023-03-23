@@ -7,9 +7,13 @@ import {
   validateToDataFromDict,
   getExtension,
   shuffleArray,
+  formatLang,
+  formatSize,
 } from "./format";
 
 export {
+  formatLang,
+  formatSize,
   generateText,
   typingText,
   incrementValue,

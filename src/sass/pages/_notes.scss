@@ -32,13 +32,18 @@
     }
 
     .notes__welcome__text {
-      font-size: 13px;
+      font-size: 10px;
       font-family: $font-title-2;
       max-width: 500px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 15px;
       animation: watch__notes__welcome__text 1s normal;
+      margin-left: 7px;
+      margin-right: 7px;
 
       @media (max-width: 702px) {
-        font-size: 10px;
+        font-size: 8px;
       }
 
       @media (max-width: 532px) {
@@ -48,7 +53,7 @@
       }
 
       & > span {
-        font-size: 23px;
+        font-size: 18px;
         font-family: $font-title-2;
         background-color: #8bc6ec;
         background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
@@ -57,7 +62,7 @@
         color: #000;
 
         @media (max-width: 702px) {
-          font-size: 18px;
+          font-size: 15px;
         }
 
         @media (max-width: 532px) {
