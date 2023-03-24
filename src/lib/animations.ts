@@ -1,5 +1,32 @@
 /** This object stores the methods of the animations to be used. */
 export class Animations {
+  typingCounter(
+    component: Element,
+    value: number,
+    sleep: number = 0.01,
+    distance: number = 450
+  ) {
+    let animationID: number = 0;
+    let animationExecuted: boolean = false;
+
+    const typing = () => {
+      for (let i = 0; i <= value; i++)
+        setTimeout(() => (component.innerHTML = `${i}`), sleep);
+    };
+
+    const animation = () => {
+      cancelAnimationFrame(animationID);
+
+      let top = component.getBoundingClientRect().top;
+      if (top < distance) {
+        typing();
+        cancelAnimationFrame(animationID);
+      }
+
+      animationID = requestAnimationFrame(animation);
+    };
+  }
+
   /**
    * This function appears and disappears elements when the scroll is close.
    * @param {Element | NodeListOf<Element>} component Element or list of elements to be animated
@@ -10,7 +37,13 @@ export class Animations {
     component: Element | NodeListOf<Element>,
     distance: number = 350
   ) {
+    // id animation
+    let animationID: number;
+
     const watchOrHiddenElement = () => {
+      // Remove the animation if it is already running.
+      cancelAnimationFrame(animationID);
+
       // First validate the type of items received (whether it is a list of components or a component).
       if (component instanceof NodeList) {
         // Go through the list of components one by one.
@@ -18,24 +51,26 @@ export class Animations {
         // If the element is within the range specified as a parameter then it displays the element.
         // If not then hide the element.
         component.forEach((element) => {
-          const top = element.getBoundingClientRect().top;
-          const style = top < distance ? "opacity: 100;" : "opacity: 0;";
+          let top = element.getBoundingClientRect().top;
+          let style = top < distance ? "opacity: 100;" : "opacity: 0;";
           element.setAttribute("style", style);
         });
       } else {
         // Do the same but only applied to one element
-        const top = component.getBoundingClientRect().top;
-        const style = top < distance ? "opacity: 100;" : "opacity: 0;";
+        let top = component.getBoundingClientRect().top;
+        let style = top < distance ? "opacity: 100;" : "opacity: 0;";
         component.setAttribute("style", style);
       }
+
+      // Animation startup
+      animationID = requestAnimationFrame(watchOrHiddenElement);
     };
 
     // Execute the function a first time before starting the scroll event.
     // Assigns the animation function to the scroll event of the web window.
     // Returns a function that when executed kills the animation performed in the scroll event of the window.
     watchOrHiddenElement();
-    window.addEventListener("scroll", watchOrHiddenElement);
-    return () => window.removeEventListener("scroll", watchOrHiddenElement);
+    return () => cancelAnimationFrame(animationID);
   }
 
   /**
@@ -50,7 +85,13 @@ export class Animations {
     distance: number = 350,
     direction: string = "left"
   ): Function {
+    // id animation
+    let animationID: number;
+
     const watchOrHiddenElement = () => {
+      // Remove the animation if it is already running.
+      cancelAnimationFrame(animationID);
+
       // First validate the type of items received (whether it is a list of components or a component).
       if (component instanceof NodeList) {
         // Scroll through the list of components.
@@ -58,8 +99,8 @@ export class Animations {
         // If it is in the range of the animation run the animation.
         // And check the direction of the animation and run it on the component.
         component.forEach((element) => {
-          const top = element.getBoundingClientRect().top;
-          const style =
+          let top = element.getBoundingClientRect().top;
+          let style =
             top < distance
               ? "transform:translateX(0%); opacity: 100;"
               : direction === "left"
@@ -69,8 +110,8 @@ export class Animations {
         });
       } else {
         // Run the animation in a single component
-        const top = component.getBoundingClientRect().top;
-        const style =
+        let top = component.getBoundingClientRect().top;
+        let style =
           top < distance
             ? "transform:translateX(0%); opacity: 100;"
             : direction === "left"
@@ -78,14 +119,16 @@ export class Animations {
             : "transform:translateX(100%); opacity:0;";
         component.setAttribute("style", style);
       }
+
+      // Animation startup
+      animationID = requestAnimationFrame(watchOrHiddenElement);
     };
 
     // Execute the function a first time before starting the scroll event.
     // Assigns the animation function to the scroll event of the web window.
     // Returns a function that when executed kills the animation performed in the scroll event of the window.
     watchOrHiddenElement();
-    window.addEventListener("scroll", watchOrHiddenElement);
-    return () => window.removeEventListener("scroll", watchOrHiddenElement);
+    return () => cancelAnimationFrame(animationID);
   }
 
   /**
@@ -100,7 +143,13 @@ export class Animations {
     distance: number = 350,
     direction: string = "up"
   ): Function {
+    // id animation
+    let animationID: number;
+
     const watchOrHiddenElement = () => {
+      // Remove the animation if it is already running.
+      cancelAnimationFrame(animationID);
+
       // First validate the type of items received (whether it is a list of components or a component).
       if (component instanceof NodeList) {
         // Scroll through the list of components.
@@ -108,8 +157,8 @@ export class Animations {
         // If it is in the range of the animation run the animation.
         // And check the direction of the animation and run it on the component.
         component.forEach((element) => {
-          const top = element.getBoundingClientRect().top;
-          const style =
+          let top = element.getBoundingClientRect().top;
+          let style =
             top < distance
               ? "transform:translateY(0px); opacity: 100;"
               : direction === "up"
@@ -119,8 +168,8 @@ export class Animations {
         });
       } else {
         // Si el componente es un solo elemento, se hace lo mismo pero sin iterar
-        const top = component.getBoundingClientRect().top;
-        const style =
+        let top = component.getBoundingClientRect().top;
+        let style =
           top < distance
             ? "transform:translateY(0px); opacity: 100;"
             : direction === "up"
@@ -128,13 +177,15 @@ export class Animations {
             : "transform:translateY(20px); opacity:0;";
         component.setAttribute("style", style);
       }
+
+      // Animation startup
+      animationID = requestAnimationFrame(watchOrHiddenElement);
     };
 
     // Execute the function a first time before starting the scroll event.
     // Assigns the animation function to the scroll event of the web window.
     // Returns a function that when executed kills the animation performed in the scroll event of the window.
     watchOrHiddenElement();
-    window.addEventListener("scroll", watchOrHiddenElement);
-    return () => window.removeEventListener("scroll", watchOrHiddenElement);
+    return () => cancelAnimationFrame(animationID);
   }
 }

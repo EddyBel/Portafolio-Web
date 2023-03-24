@@ -13,6 +13,13 @@ export function Proyects() {
   useEffect(() => {
     let projects_left = document.querySelectorAll(".card__proyect");
     let projects_right = document.querySelectorAll(".card__proyect__right");
+    let scroll_text_left = document.querySelectorAll(
+      ".projects__scrolling__text_left"
+    );
+    let scroll_text_right = document.querySelectorAll(
+      ".projects__scrolling__text_right"
+    );
+
     let cleanAnimation_left =
       animation.showElementWithScrollLeftAndRight(projects_left);
     let cleanAnimation_right = animation.showElementWithScrollLeftAndRight(
@@ -20,19 +27,30 @@ export function Proyects() {
       350,
       "right"
     );
+    let cleanTextAnimation_left = animation.showElementWithScrollUpAndDown(
+      scroll_text_left,
+      450
+    );
+    let cleanTextAnimation_right = animation.showElementWithScrollUpAndDown(
+      scroll_text_right,
+      450
+    );
+
     return () => {
       cleanAnimation_left();
       cleanAnimation_right();
+      cleanTextAnimation_left();
+      cleanTextAnimation_right();
     };
   }, [projects]);
 
   return (
     <section className="proyects">
       <div className="projects__scrolling__text_left">
-        <h1>{CreateLargeString("- FEATURED WORK", 3)}</h1>
+        <h1>{CreateLargeString(" FEATURED WORK", 3)}</h1>
       </div>
       <div className="projects__scrolling__text_right">
-        <h1>{CreateLargeString("FEATURED WORK - ", 3)}</h1>
+        <h1>{CreateLargeString("FEATURED WORK", 3)}</h1>
       </div>
       <div className="container__proyects">
         {!projects ? (

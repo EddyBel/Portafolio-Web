@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { YoAPIBiographyContent } from "../types/index";
-import { BookLoader } from "../components/common/index";
+import { LinesLoader } from "../components/common/index";
 import { useMyAPI, useWeb } from "../hook/useContext";
 import { YO_API } from "../web.config";
 
@@ -21,30 +21,18 @@ export const About = () => {
   }, [about]);
 
   return (
-    <div className="about__me">
-      <div className="about__me__container__title">
-        <div className="about__me__decoration__title"></div>
-        <h1 className="about__me__title">About me</h1>
-        <div className="about__me__decoration__title"></div>
-      </div>
-      <div className="about__me__container__content">
-        <div className="about__me__content__text">
-          {!aboutContent ? (
-            <BookLoader key="Spinner loading about me" />
-          ) : (
-            aboutContent?.content.map((paragraph) => (
-              <p key={`content_paragraph_${paragraph}`}>{paragraph}</p>
-            ))
-          )}
-        </div>
-        <div className="about__me__content__img">
-          <img
-            src={`${YO_API}api/assets/img/front_about.png`}
-            alt="front__img__by__about__page"
-            className="about__me__front__img"
-          />
-        </div>
-      </div>
-    </div>
+    <section className="about__me">
+      <h2 className="about__me__welcome__message">HELLO THERE</h2>
+      <h1 className="about__me__title_page">I am Eduardo</h1>
+      <section className="about__me__description">
+        {!aboutContent ? (
+          <LinesLoader key="Spinner loading about me" />
+        ) : (
+          aboutContent?.content.map((paragraph) => (
+            <p className="about__me__text">{paragraph}</p>
+          ))
+        )}
+      </section>
+    </section>
   );
 };

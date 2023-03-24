@@ -65,7 +65,7 @@ export const Repositories = () => {
 
   // Animations are defined here
   useEffect(() => {
-    setTimeout(() => {
+    if (repositories) {
       // Create the animation that will be used by all repositories.
       // the funcino returns a function that removes the event that uses the animation.
       // Get the height of the window and subtract an action margin.
@@ -90,7 +90,7 @@ export const Repositories = () => {
         cleanAnimation();
         window.removeEventListener("resize", animationRepo);
       };
-    }, 1000);
+    }
   }, [repositories]);
 
   return (

@@ -1,0 +1,38 @@
+.counter {
+  width: 100%;
+  padding: 10px;
+  margin-top: 500px;
+  margin-bottom: 400px;
+  @include flex(column, center, center);
+
+  .counter__description {
+    max-width: 800px;
+    text-align: center;
+    font-size: 15px;
+    font-family: $font-title-2;
+    font-style: italic;
+    transition: all 800ms;
+  }
+
+  .counter__counts {
+    @include flex(row, center, center, 30px, wrap);
+    width: 100%;
+    margin-top: 50px;
+
+    .counter__counts__container {
+      @include flex(column, center, center, 5px);
+      transition: all 700ms;
+
+      .counter__counts__number {
+        font-size: 30px;
+        font-family: $font-title-2;
+        font-weight: bold;
+      }
+
+      .counter__counts__type {
+        font-size: 18px;
+        font-family: $font-title-2;
+      }
+    }
+  }
+}

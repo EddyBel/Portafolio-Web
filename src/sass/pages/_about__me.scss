@@ -4,101 +4,90 @@
   padding-bottom: 100px;
   @include flex(column, flex-start, center);
 
-  .about__me__container__title {
-    @include flex(row, center, center, 10px);
-    min-width: 100vw;
-    padding: 10px;
+  @media (max-width: 897px) {
+    @include p-horizontal(15px, 15px);
+  }
 
-    .about__me__title {
-      font-family: $font-title-2;
-      font-size: 40px;
-      text-align: center;
-      white-space: nowrap;
+  .about__me__welcome__message {
+    font-size: 20px;
+    font-family: $font-title-2;
+    color: #ff2525;
+    text-align: center;
+    animation: watch__text__about 800ms normal;
+
+    @media (max-width: 569px) {
+      font-size: 17px;
     }
 
-    .about__me__decoration__title {
-      width: 100%;
-      height: 3px;
-      border-radius: 12px;
-      background: #090d11ab;
-      animation: about__me__decoration__watch 1.5s normal;
-
-      @keyframes about__me__decoration__watch {
-        0% {
-          width: 0%;
-        }
-        100% {
-          width: 100%;
-        }
-      }
+    @media (max-width: 368px) {
+      font-size: 15px;
     }
   }
 
-  .about__me__container__content {
-    @include flex(row, center, center);
-    width: 100%;
+  .about__me__title_page {
+    font-size: 70px;
+    font-family: $font-title-2;
+    color: #000;
+    background-color: #8bc6ec;
+    background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    animation: watch__text__about 900ms normal;
 
-    @media (max-width: 750px) {
-      @include flex(column, center, center, 20px);
+    @media (max-width: 569px) {
+      font-size: 50px;
     }
 
-    .about__me__content__text {
-      @include flex(column, center, center, 10px);
-      width: 60%;
-      height: 100%;
-      min-height: 400px;
-      padding: 20px;
-      text-align: justify;
+    @media (max-width: 368px) {
+      font-size: 30px;
+    }
+  }
 
-      @media (max-width: 750px) {
-        width: 100%;
+  .about__me__description {
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    @include p-vertical(40px, 40px);
+    @include flex(column, center, center, 15px);
+    margin-top: 50px;
+    max-width: 900px;
+    animation: watch__text__about__down 800ms normal;
+
+    .about__me__text {
+      font-size: 13px;
+      font-family: $font-title-2;
+      text-align: center;
+
+      @media (max-width: 569px) {
+        font-size: 10px;
       }
 
-      & > p {
-        width: 100%;
-        max-width: 600px;
-        font-size: 13px;
-        animation: paragraph_animation 900ms normal;
-
-        @keyframes paragraph_animation {
-          0% {
-            transform: translateX(-100%);
-            opacity: 0;
-          }
-          100% {
-            transform: translateX(0%);
-            opacity: 100;
-          }
-        }
+      @media (max-width: 368px) {
+        font-size: 9px;
       }
     }
-    .about__me__content__img {
-      @include flex(row, center, center);
-      width: 40%;
+  }
+}
 
-      .about__me__front__img {
-        border-radius: 50%;
-        width: 300px;
-        height: 300px;
-        background: transparent;
-        object-fit: cover;
-        // box-shadow: 0px 10px 30px 5px rgba($color: #000000, $alpha: 0.2);
-        animation: about__me__front 900ms normal;
+@keyframes watch__text__about {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 100;
+  }
+}
 
-        @keyframes about__me__front {
-          0% {
-            transform: translateX(200px) scale(0);
-          }
-          100% {
-            transform: translateX(0px) scale(1);
-          }
-        }
-
-        @media (max-width: 750px) {
-          width: 200px;
-          height: 200px;
-        }
-      }
-    }
+@keyframes watch__text__about__down {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 100;
   }
 }

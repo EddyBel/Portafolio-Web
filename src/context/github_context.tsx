@@ -8,6 +8,8 @@ type ContextGithub = {
   user_data: GITHUB_RESPONSE | null;
   repos: GITHUB_REPO[] | null;
   reorderRepositoriesByCommit: Function;
+  getAllLinesCode: Function;
+  getTotalCommits: Function;
 };
 
 /** Global context of github data */
@@ -69,6 +71,61 @@ export function GithubProvider({ children }: any) {
     } else return [];
   };
 
+  const getTotalCommits = async () => {
+    if (userRepositories && userData) {
+      let totalCommits: number = 0;
+
+      await Promise.all(
+        userRepositories.map(async (repo) => {
+          const url = `https://api.github.com/repos/${userData.login}/${repo.name}/commits`;
+          const response = await fetch(url, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${TOKEN_GITHUB}`,
+            },
+          });
+          const commits = await response.json();
+          totalCommits += commits.length;
+        })
+      );
+
+      return totalCommits;
+    }
+  };
+
+  /**
+   * This function gets all the lines of code written in each repository.
+   * @returns {Promise<number | undefined>} Return number of total lines.
+   */
+  const getAllLinesCode = async (): Promise<number | undefined> => {
+    if (userRepositories && userData) {
+      let totalLines: number = 0;
+
+      // It goes through all the repositories.
+      // Extract the lines from each repository with a request.
+      // Sum them up and store them all in the variable.
+      await Promise.all(
+        userRepositories.map(async (repo) => {
+          const url = `https://api.github.com/repos/${userData.login}/${repo.name}/stats/code_frequency`;
+          const response = await fetch(url, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${TOKEN_GITHUB}`,
+            },
+          });
+          const weeksOfData = await response.json();
+          try {
+            weeksOfData.map(
+              (week: number[]) => (totalLines += week[1] + week[2])
+            );
+          } catch {}
+        })
+      );
+
+      return totalLines;
+    }
+  };
+
   /** Executes requests to the github api */
   useEffect(() => {
     // Request user information
@@ -86,6 +143,8 @@ export function GithubProvider({ children }: any) {
     user_data: userData,
     repos: userRepositories,
     reorderRepositoriesByCommit,
+    getAllLinesCode,
+    getTotalCommits,
   };
 
   return (
