@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { NoteCard, BookLoader, SearchEngine } from "../components/common/index";
 import { useMyAPI, useGithub } from "../hook/useContext";
 import { validateToDataFromDict } from "../util/index";
+// import { Animations } from "../lib/animations";
+
+// const animation = new Animations();
 
 export function Notes() {
   const [matters, setMatters] = useState<string[]>();
@@ -66,6 +69,18 @@ export function Notes() {
       }
     }
   }, [notes, stateMatter]);
+
+  // useEffect(() => {
+  //   if (allNotes) {
+  //     const cards = document.querySelectorAll(".ag-courses_item");
+  //     const height = window.innerHeight - 200;
+  //     const cleanAnimation = animation.showElementWithScrollUpAndDown(
+  //       cards,
+  //       height
+  //     );
+  //     return () => cleanAnimation();
+  //   }
+  // }, [allNotes]);
 
   return (
     <div className="notes">

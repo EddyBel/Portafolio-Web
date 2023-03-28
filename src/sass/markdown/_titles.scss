@@ -7,16 +7,23 @@ $max-size-title: 75px;
   line-height: $max-size-title;
   text-align: center;
   font-family: $font-title-2;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+
+  @media (max-width: 731px) {
+    font-size: $max-size-title - 30px;
+    line-height: $max-size-title - 30px;
+  }
 
   @media (max-width: 573px) {
-    font-size: $max-size-title - 20px;
-    line-height: $max-size-title - 20px;
+    font-size: $max-size-title - 30px;
+    line-height: $max-size-title - 30px;
   }
 
-  @media (max-width: 348px) {
-    font-size: $max-size-title - 40px;
-    line-height: $max-size-title - 40px;
-  }
+  // @media (max-width: 348px) {
+  //   font-size: $max-size-title - 40px;
+  //   line-height: $max-size-title - 40px;
+  // }
 }
 
 .markdown__title__two {
@@ -50,8 +57,8 @@ $max-size-title: 75px;
   font-family: $font-title-2;
 
   @media (max-width: 573px) {
-    font-size: calc($max-size-title / 2.3 - 20px);
-    line-height: calc($max-size-title / 2.3 - 20px);
+    font-size: calc($max-size-title / 1.7 - 20px);
+    line-height: calc($max-size-title / 1.7 - 20px);
   }
 }
 

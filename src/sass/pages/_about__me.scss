@@ -53,11 +53,13 @@
     margin-top: 50px;
     max-width: 900px;
     animation: watch__text__about__down 800ms normal;
+    transition: all 400ms;
 
     .about__me__text {
       font-size: 13px;
       font-family: $font-title-2;
       text-align: center;
+      animation: watch__text__about 800ms normal;
 
       @media (max-width: 569px) {
         font-size: 10px;

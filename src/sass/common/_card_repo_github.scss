@@ -1,57 +1,93 @@
-.github__card {
-  background: #0c1014;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  max-height: 400px;
+.github__card__container {
   transition: all 400ms;
-  @include flex(column, space-between, center);
+  z-index: 9990;
 
-  &:hover {
+  .github__card {
+    width: 100%;
+    height: 100%;
+    max-height: 400px;
+    transition: all 400ms;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    @include flex(column, space-between, center);
+
+    &.one {
+      @include background-gradient-0;
+    }
+
+    &.two {
+      @include background-gradient-1;
+    }
+
+    &.tree {
+      @include background-gradient-2;
+    }
+
+    &.four {
+      @include background-gradient-3;
+    }
+
+    &.five {
+      @include background-gradient-4;
+    }
+
+    .shadow__background {
+      padding: 20px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: #0c1014dc;
+      // backdrop-filter: blur(22px);
+    }
+
+    &:hover {
+      .github__card__proyect__title {
+        color: #d6eaf8;
+      }
+    }
+
+    .github__card__proyect {
+      @include flex(row, space-between, center);
+      width: 100%;
+    }
+
     .github__card__proyect__title {
-      color: #d6eaf8;
+      font-size: 35px;
+      font-family: $font-title-2;
+      color: #fff;
+      width: 100%;
+      transition: all 300ms;
+
+      @media (max-width: 420px) {
+        font-size: 20px;
+      }
     }
-  }
 
-  .github__card__proyect {
-    @include flex(row, space-between, center);
-    width: 100%;
-  }
-
-  .github__card__proyect__title {
-    font-size: 35px;
-    font-family: $font-title-2;
-    color: #fff;
-    width: 100%;
-    transition: all 300ms;
-
-    @media (max-width: 420px) {
-      font-size: 20px;
-    }
-  }
-
-  .github__card__proyect__description {
-    font-size: 13px;
-    font-family: $font-title-2;
-    color: #ffffffbd;
-    width: 100%;
-    transition: all 300ms;
-
-    @media (max-width: 420px) {
-      font-size: 9px;
-    }
-  }
-
-  .github__card__tags {
-    width: 100%;
-    margin-top: 10px;
-    @include flex(row, flex-start, center, 10px, wrap);
-
-    .github__card__tag {
-      color: #ffffff70;
+    .github__card__proyect__description {
+      font-size: 13px;
+      font-family: $font-title-2;
+      color: #ffffffbd;
+      width: 100%;
+      transition: all 300ms;
 
       @media (max-width: 420px) {
         font-size: 9px;
+      }
+    }
+
+    .github__card__tags {
+      width: 100%;
+      margin-top: 10px;
+      @include flex(row, flex-start, center, 10px, wrap);
+
+      .github__card__tag {
+        color: #ffffff70;
+
+        @media (max-width: 420px) {
+          font-size: 9px;
+        }
       }
     }
   }

@@ -19,28 +19,39 @@ export function NoteCard(props: PropsThemeCard) {
   const tags = stringToArray(props.tags);
   const { name } = getExtension(props.title);
 
+  const formatDate = (dateString: string): string => {
+    try {
+      const date = new Date(dateString);
+      if (isNaN(date.getTime())) {
+        throw new Error("Invalid Date");
+      }
+      return date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+    } catch (error) {
+      return dateString;
+    }
+  };
+
   return (
-    <Link to={`${props.language}/${props.title}`} className="note" title={name}>
-      <div className="note-left">
-        <div className="note-container-data">
-          <h4>Codigo</h4>
-          <h1>{props.language}</h1>
+    // <Link to={`${props.language}/${props.title}`} className="note" title={name}>
+
+    // </Link>
+    <div className="ag-courses_item">
+      <Link
+        to={`${props.language}/${props.title}`}
+        className="ag-courses-item_link"
+      >
+        <div className="ag-courses-item_link_background"></div>
+        <div className={`ag-courses-item_bg ${props.language}`} />
+        <h1 className="ag-courses-item_title">{name}</h1>
+        <h4 className="ag-courses-item_lenguaje">{props.language}</h4>
+        <div className="ag-courses-item_date-box">
+          <span className="ag-courses-item_date">{formatDate(props.date)}</span>
         </div>
-        <p className="note-level-note">{stringToStar(props.level)}</p>
-      </div>
-      <div className="note-right">
-        <div className="note-container-tags">
-          {tags.map((tag) => (
-            <p className="note-tag" key={`tag-${Math.random()}`}>
-              {tag}
-            </p>
-          ))}
-        </div>
-        <div className="note-container-data">
-          <h1 className="note-name">{trimTheString(name, 45)}</h1>
-          <h5 className="note-date">{props.date}</h5>
-        </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }

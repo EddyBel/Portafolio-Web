@@ -1,4 +1,8 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Animations } from "../../lib/animations";
+
+const animation = new Animations();
 
 export function IndexAbout() {
   const createDecorationsPointes = (points: number) => {
@@ -7,6 +11,30 @@ export function IndexAbout() {
       pointers.push(<div className="home__body__about__decoration"></div>);
     return pointers;
   };
+
+  useEffect(() => {
+    const title = document.querySelector(
+      ".home__body__about__title"
+    ) as HTMLElement;
+    const description = document.querySelectorAll(
+      ".home__body__about__description"
+    );
+    let height = window.innerHeight - 200;
+
+    const cleanAnimationTitle = animation.showElementWithScrollUpAndDown(
+      title,
+      height
+    );
+    const cleanAnimationDescription = animation.showElementWithScrollUpAndDown(
+      description,
+      height
+    );
+
+    return () => {
+      cleanAnimationTitle();
+      cleanAnimationDescription();
+    };
+  }, []);
 
   return (
     <section className="home__body__about">

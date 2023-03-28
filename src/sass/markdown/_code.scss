@@ -74,3 +74,19 @@
     }
   }
 }
+
+.button__copy__code {
+  background: none;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 10px;
+
+  &:hover {
+    background: rgba(170, 170, 170, 0.062);
+    transition: 0.5s;
+  }
+
+  & svg {
+    color: #fff;
+  }
+}

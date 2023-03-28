@@ -64,6 +64,8 @@
     font-family: $font-title-2;
     width: 100%;
     text-align: center;
+    transition: transform 400ms, opacity 400ms;
+    text-transform: uppercase;
 
     @media (max-width: 612px) {
       font-size: 50px;
@@ -81,6 +83,7 @@
     max-width: 500px;
     text-align: center;
     margin-bottom: 30px;
+    transition: transform 400ms, opacity 400ms;
 
     @media (max-width: 612px) {
       font-size: 10px;

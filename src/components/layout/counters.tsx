@@ -20,30 +20,23 @@ const lenguages = [
 ];
 
 export function Counters() {
-  const [lines, setLines] = useState<number | undefined>();
   const [projects, setProjects] = useState<number | undefined>();
-  const [commits, setCommits] = useState<number | undefined>();
 
   const github = useGithub();
   const repos = github?.repos;
+  const linesCode = github?.lines_code;
+  const commits = github?.commits;
 
   useEffect(() => {
-    github
-      ?.getAllLinesCode()
-      .then((response: number | undefined) => setLines(response));
-    github
-      ?.getTotalCommits()
-      .then((response: number | undefined) => setCommits(response));
     if (repos) setProjects(repos.length);
   }, [repos]);
 
   useEffect(() => {
-    if (lines && projects && commits) {
+    if (linesCode && projects && commits) {
       const description = document.querySelector(".counter__description");
       const counters = document.querySelectorAll(".counter__counts__container");
       let cleanAnimationDes: Function;
       let cleanAnimationCoun: Function;
-
       let height = window.innerHeight - 100;
 
       if (description) {
@@ -62,7 +55,7 @@ export function Counters() {
         cleanAnimationCoun();
       };
     }
-  }, [lines, projects, commits]);
+  }, [linesCode, projects, commits]);
 
   const formatNumber = (
     code: number,
@@ -104,7 +97,7 @@ export function Counters() {
         </div>
         <div className="counter__counts__container">
           <p className="counter__counts__number" id="counters-lines">
-            {!lines ? 0 : formatNumber(lines)}
+            {!linesCode ? 0 : formatNumber(linesCode)}
           </p>
           <p className="counter__counts__type">Lines of code</p>
         </div>

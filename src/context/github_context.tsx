@@ -3,10 +3,12 @@ import { getUserData, getUserRepositories } from "../service/github.api";
 import { GITHUB_REPO, GITHUB_RESPONSE } from "../types/index";
 import { TOKEN_GITHUB } from "../web.config";
 
-/** Information that will have the context */
+// Information that will have the context
 type ContextGithub = {
   user_data: GITHUB_RESPONSE | null;
   repos: GITHUB_REPO[] | null;
+  lines_code: number | null;
+  commits: number | null;
   reorderRepositoriesByCommit: Function;
   getAllLinesCode: Function;
   getTotalCommits: Function;
@@ -21,12 +23,16 @@ export const GithubContext = createContext<ContextGithub | null>(null);
  * @returns - Supplier component
  */
 export function GithubProvider({ children }: any) {
-  /** Status of a user's gitbub account information */
+  // Status of a user's gitbub account information
+  // Status of github repository information
+  // Status that stores the total number of lines in all github repositories.
+  // Status of the total number of commits made in github.
   const [userData, setUserData] = useState<GITHUB_RESPONSE | null>(null);
-  /** Status of github repository information */
   const [userRepositories, setUserRepositories] = useState<
     GITHUB_REPO[] | null
   >(null);
+  const [linesRepos, setLinesRepos] = useState<number | null>(null);
+  const [allCommits, setAllCommits] = useState<number | null>(null);
 
   /**
    * This function reorders the repositories obtained by the n repos with the most recent commit
@@ -58,25 +64,36 @@ export function GithubProvider({ children }: any) {
           return { repo, lastCommitDate };
         })
       );
+
       // Reorders the repositories from the one with the most recent commit date to the least recent
       const sortedRepositories = repositoriesWithLastCommitDates.sort(
         (a, b) => b.lastCommitDate.getTime() - a.lastCommitDate.getTime()
       );
+
       // Get only the first n repositories specified as the function parameter.
       const latestRepositories = sortedRepositories
         .slice(0, n)
         .map((x) => x.repo);
+
       // Returns the list of retrieved repositories
       return latestRepositories;
     } else return [];
   };
 
-  const getTotalCommits = async () => {
+  /**
+   * Extract the total number of commits in github
+   * @returns {Promise<number | undefined>} If it found the commits it will return the number of commits obtained.
+   */
+  const getTotalCommits = async (): Promise<number | undefined> => {
     if (userRepositories && userData) {
+      // Variable to store the number of commits.
       let totalCommits: number = 0;
 
       await Promise.all(
         userRepositories.map(async (repo) => {
+          // Creates the request to the API path that stores the commits.
+          // The returned response serialize it as json.
+          // Add it to the variable that will store all the commits.
           const url = `https://api.github.com/repos/${userData.login}/${repo.name}/commits`;
           const response = await fetch(url, {
             method: "GET",
@@ -89,6 +106,7 @@ export function GithubProvider({ children }: any) {
         })
       );
 
+      // Return total number of commits.
       return totalCommits;
     }
   };
@@ -138,10 +156,28 @@ export function GithubProvider({ children }: any) {
       .catch((response) => setUserRepositories(null));
   }, []);
 
+  // Extract the total number of lines from all github repositories and store them in a global state.
+  useEffect(() => {
+    if (userRepositories)
+      getAllLinesCode().then((response) => {
+        if (response) setLinesRepos(response);
+      });
+  }, [userRepositories]);
+
+  // Extract all commits made in github.
+  useEffect(() => {
+    if (userRepositories)
+      getTotalCommits().then((response) => {
+        if (response) setAllCommits(response);
+      });
+  }, [userRepositories]);
+
   /** Values to be provided by the context */
   const values = {
     user_data: userData,
     repos: userRepositories,
+    lines_code: linesRepos,
+    commits: allCommits,
     reorderRepositoriesByCommit,
     getAllLinesCode,
     getTotalCommits,

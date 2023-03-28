@@ -60,6 +60,7 @@
   mix-blend-mode: difference;
   color: #fff;
   animation: watch_text_3d 1.6s normal;
+  transition: all 400ms;
 
   @media (max-width: 782px) {
     font-size: 4rem;

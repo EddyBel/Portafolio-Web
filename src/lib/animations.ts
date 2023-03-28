@@ -1,5 +1,50 @@
 /** This object stores the methods of the animations to be used. */
 export class Animations {
+  /**
+   * This function rotates an element based on the mouse position.
+   * @param {HTMLElement} component Component to which the transformation will be applied.
+   * @returns {Function} Returns a function that removes the animation when executed.
+   */
+  trackerAndRotateMouse3D(
+    component: HTMLElement,
+    rotate: number = 20,
+    scale: number = 0.9
+  ): Function {
+    // Extracts the dimensions of the element.
+    let height = component.clientHeight;
+    let width = component.clientWidth;
+
+    const animation = (event: MouseEvent) => {
+      // This function is executed every time the animation is activated.
+      // It extracts the position of the mouse inside the element.
+      // Calculates the rotation angle based on the element size and the mouse position.
+      // Creates a string representing the styles or transformations to be done to the element.
+      const { offsetX, offsetY } = event;
+      const yRotation = ((offsetX - width / 2) / width) * rotate;
+      const xRotation = ((offsetY - height / 2) / height) * rotate;
+      const string = `perspective(500px) scale(${scale}) rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+      component.style.transform = string;
+    };
+
+    // This function restarts the transformations when the mouse leaves the element.
+    const cleanAnimation = () => (component.style.transform = ``);
+
+    // Assigns the mouse input events that trigger the animation.
+    // And the mouse output event that deactivates the mouse animation.
+    component.addEventListener("mouseover", animation);
+    component.addEventListener("mouseout", cleanAnimation);
+
+    // Returns a function that removes mouse events on the element.
+    return () => {
+      component.removeEventListener("mouseover", animation);
+      component.removeEventListener("mouseout", cleanAnimation);
+    };
+  }
+
+  /**
+   * Esta funcion crea un efecto de aumento de numeros progresiva con un cierto numero.
+   * !TODO Esta funcion no esta terminada aun se debe mejorar para que la animación solo se ejecute una sola vez.
+   */
   typingCounter(
     component: Element,
     value: number,

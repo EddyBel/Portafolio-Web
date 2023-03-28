@@ -23,11 +23,21 @@ export function MoreProyects() {
 
   useEffect(() => {
     let elements = document.querySelectorAll(".github__card");
+    let title_page = document.querySelector(
+      ".github__more__title"
+    ) as HTMLElement;
+    const removeAnimation = animations.showElementWithScrollUpAndDown(
+      title_page,
+      550
+    );
     const removeEffect = animations.showElementWithScrollUpAndDown(
       elements,
       550
     );
-    return () => removeEffect();
+    return () => {
+      removeAnimation();
+      removeEffect();
+    };
   }, [repos]);
 
   return (

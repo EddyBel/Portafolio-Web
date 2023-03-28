@@ -1,0 +1,59 @@
+// Colors
+$color-black: #0c1014fb;
+
+// Gradients
+@mixin background-gradient-0 {
+  background-color: #99e9ff;
+  background-image: radial-gradient(
+      at 51% 68%,
+      hsla(300, 71%, 67%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 67% 70%, hsla(255, 70%, 65%, 1) 0px, transparent 50%),
+    radial-gradient(at 83% 53%, hsla(65, 96%, 65%, 1) 0px, transparent 50%),
+    radial-gradient(at 22% 54%, hsla(151, 88%, 67%, 1) 0px, transparent 50%);
+}
+@mixin background-gradient-1 {
+  background-color: #adff99;
+  background-image: radial-gradient(
+      at 88% 82%,
+      hsla(161, 69%, 69%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 70% 41%, hsla(223, 80%, 60%, 1) 0px, transparent 50%),
+    radial-gradient(at 26% 56%, hsla(90, 83%, 69%, 1) 0px, transparent 50%),
+    radial-gradient(at 19% 42%, hsla(120, 99%, 69%, 1) 0px, transparent 50%);
+}
+@mixin background-gradient-2 {
+  background-color: #99ffca;
+  background-image: radial-gradient(
+      at 79% 73%,
+      hsla(305, 63%, 67%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 42% 14%, hsla(79, 68%, 73%, 1) 0px, transparent 50%),
+    radial-gradient(at 70% 49%, hsla(195, 78%, 61%, 1) 0px, transparent 50%),
+    radial-gradient(at 3% 49%, hsla(246, 92%, 64%, 1) 0px, transparent 50%);
+}
+@mixin background-gradient-3 {
+  background-color: #99b6ff;
+  background-image: radial-gradient(
+      at 1% 63%,
+      hsla(3, 64%, 62%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 77% 90%, hsla(261, 63%, 60%, 1) 0px, transparent 50%),
+    radial-gradient(at 13% 73%, hsla(355, 94%, 76%, 1) 0px, transparent 50%),
+    radial-gradient(at 72% 78%, hsla(342, 68%, 76%, 1) 0px, transparent 50%);
+}
+@mixin background-gradient-4 {
+  background-color: #b499ff;
+  background-image: radial-gradient(
+      at 20% 50%,
+      hsla(86, 73%, 73%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 46% 15%, hsla(211, 64%, 75%, 1) 0px, transparent 50%),
+    radial-gradient(at 25% 49%, hsla(312, 75%, 64%, 1) 0px, transparent 50%),
+    radial-gradient(at 29% 22%, hsla(26, 93%, 64%, 1) 0px, transparent 50%);
+}

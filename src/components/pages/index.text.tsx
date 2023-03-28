@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { typingText } from "../../util/index";
 import { useGithub } from "../../hook/useContext";
+import { Animations } from "../../lib/animations";
+
+const animation = new Animations();
 
 export function MainText() {
   const github_state = useGithub();
@@ -8,7 +11,9 @@ export function MainText() {
 
   useEffect(() => {
     const parent = document.getElementById("home__data__description");
+    const title = document.getElementById("home__main__title") as HTMLElement;
     if (parent && description) typingText(parent, description, 100);
+    animation.trackerAndRotateMouse3D(title);
   }, [description]);
 
   return (
@@ -16,7 +21,7 @@ export function MainText() {
       <div className="home__main__circle__center"></div>
       {/* <div className="gooey"></div> */}
 
-      <h1 className="home__main__title">
+      <h1 className="home__main__title" id="home__main__title">
         <span className="greeting one">HI!</span>
         <span className="greeting two">I AM</span>
         <span className="greeting tree">EDUARDO</span>

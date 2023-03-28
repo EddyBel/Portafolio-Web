@@ -12,3 +12,12 @@ export const generateText = (numWords: number, wordList: string[]) => {
   }
   return text;
 };
+
+/**
+ * Esta función extrae un item aleatorio de la lista.
+ * @param {any[]} list Lista donde se obtendran los elementos.
+ * @returns {any} Item extraido de la lista.
+ */
+export const getValueRandom = (list:any[]):any => {
+  return list[Math.floor(Math.random() * list.length)];
+}

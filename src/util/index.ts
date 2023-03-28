@@ -1,4 +1,4 @@
-import { generateText } from "./generate";
+import { generateText, getValueRandom } from "./generate";
 import { typingText, incrementValue, changeStringInfinite } from "./render";
 import { createLargeString, trimTheString } from "./text";
 import {
@@ -12,6 +12,7 @@ import {
 } from "./format";
 
 export {
+  getValueRandom,
   formatLang,
   formatSize,
   generateText,

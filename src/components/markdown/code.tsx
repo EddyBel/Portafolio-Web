@@ -1,10 +1,29 @@
 import Highlight, { defaultProps } from "prism-react-renderer";
-import Prism from "prismjs";
 import theme from "prism-react-renderer/themes/okaidia";
+import { Copy } from "../../components/common/svg";
+import { useEffect, useState } from "react";
 
 export function Pre(props: any) {
-  let className: string = props.children[0].props.className;
+  // This state copies the code passed to the block
+  const [code, setCode] = useState("");
+
+  // Extracts the className of the element that will be used to identify the block code.
+  // Extracts only the string that has the language name
+  let className: string = props.children[0]?.props?.className || "Code";
   let lang = className.replace(/language-/, "").toUpperCase();
+
+  /** What this function does is to copy the code provided in this block to the user */
+  const copyCode = () => navigator.clipboard.writeText(code);
+
+  useEffect(() => {
+    // In this section the code obtained from the block will be stored in the state.
+    // The first thing to do is to verify that the element from which the code will be extracted exists.
+    // Then send it to the state to be used.
+    if (!props.children || !props.children[0]?.props?.children) return;
+    const newCode = props.children[0].props.children;
+    if (newCode !== code) setCode(newCode);
+  }, [props.children, code]);
+
   return (
     <section className="markdown__code__box">
       <div className="markdown__box__data">
@@ -14,6 +33,9 @@ export function Pre(props: any) {
           <div className="green"></div>
         </div>
         <h1>{lang}</h1>
+        <button onClick={copyCode} title="copy" className="button__copy__code">
+          <Copy width="15px" height="15px" color="#fff" />
+        </button>
       </div>
       <pre className="markdown__container__code">{props.children}</pre>
     </section>
@@ -21,14 +43,18 @@ export function Pre(props: any) {
 }
 
 export function Code(props: any) {
-  let className = props.className;
-  let language: any;
+  // First get the className of the code block.
+  // Assign a default value to the language to use.
+  // Initialize the code line counter.
+  let className = props?.className;
+  let language: any = "jsx";
+  let line_number = 0;
+
+  // Extracts the language from the className.
+  // If no language is found, it uses the default language.
   try {
     language = verificarLenguaje(className.replace(/language-/, ""));
-  } catch {
-    language = "jsx";
-  }
-  let line_number = 0;
+  } catch {}
 
   return (
     <Highlight

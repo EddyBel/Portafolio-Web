@@ -710,3 +710,19 @@ export function ContorGithub(props: PropsSVG) {
     </svg>
   );
 }
+
+export function Copy(props: PropsSVG) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={props.width}
+      height={props.height}
+      viewBox="0 0 50 50"
+    >
+      <path
+        fill={props.color}
+        d="M7 2C4.2 2 2 4.2 2 7v27c0 2.8 2.2 5 5 5h27c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5zm0 2h27c1.7 0 3 1.3 3 3v27c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm34 7v2h2c1.7 0 3 1.3 3 3v27c0 1.7-1.3 3-3 3H16c-1.7 0-3-1.3-3-3v-2h-2v2c0 2.8 2.2 5 5 5h27c2.8 0 5-2.2 5-5V16c0-2.8-2.2-5-5-5z"
+      ></path>
+    </svg>
+  );
+}
