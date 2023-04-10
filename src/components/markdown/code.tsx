@@ -26,12 +26,7 @@ export function Pre(props: any) {
 
   return (
     <section className="markdown__code__box">
-      <div className="markdown__box__data">
-        <div className="markdown__box__decoration">
-          <div className="red"></div>
-          <div className="yellow"></div>
-          <div className="green"></div>
-        </div>
+      <div className="buttons_and_data__container">
         <h1>{lang}</h1>
         <button onClick={copyCode} title="copy" className="button__copy__code">
           <Copy width="15px" height="15px" color="#fff" />
@@ -83,6 +78,10 @@ export function Code(props: any) {
       )}
     </Highlight>
   );
+}
+
+export function SimpleCodeBlock({ text = "", param = "" }: any) {
+  return <span className={`simple__code__block ${param}`}>{text}</span>;
 }
 
 function verificarLenguaje(lenguaje: string): string {

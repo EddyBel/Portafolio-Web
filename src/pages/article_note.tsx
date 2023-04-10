@@ -29,7 +29,11 @@ export function Article() {
             <BookLoader />
           </div>
         ) : (
-          <ReactMarkdown children={content} components={rendersMarkdown} />
+          <ReactMarkdown
+            skipHtml={true}
+            children={content}
+            components={rendersMarkdown}
+          />
         )}
       </div>
     </div>

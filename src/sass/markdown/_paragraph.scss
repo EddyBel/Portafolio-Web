@@ -1,6 +1,14 @@
 .markdown__paragraph__normal {
   color: #000;
-  font-size: 15px;
-  font-family: $font-title-1;
+  font-size: 13px;
+  font-family: $font-title-2;
   width: 100%;
+}
+
+.text__bold {
+  color: #6a37e0;
+  font-size: 13px;
+  font-family: $font-title-2;
+  font-weight: bold;
+  text-transform: uppercase;
 }

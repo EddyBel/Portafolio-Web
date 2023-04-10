@@ -1,3 +1,6 @@
+import { ValidateTypeByTagNameOrType } from "./validate_type";
+
 export function P(props: any) {
-  return <p className="markdown__paragraph__normal">{props.children}</p>;
+  const renderedChildren = ValidateTypeByTagNameOrType(props);
+  return <p className="markdown__paragraph__normal">{renderedChildren}</p>;
 }

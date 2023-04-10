@@ -1,3 +1,5 @@
+import { ValidateTypeByTagNameOrType } from "./validate_type";
+
 export function Ul(props: any) {
   return <ul className="markdown__list">{props.children}</ul>;
 }
@@ -7,12 +9,11 @@ export function Ol(props: any) {
 }
 
 export function Li(props: any) {
-  let text = props.children[0];
-  let newText = text.charAt(0).toUpperCase() + text.slice(1);
+  const renderedChildren = ValidateTypeByTagNameOrType(props);
   return (
     <li className="markdown__item">
       <div className="markdown__item__decoration"></div>
-      {newText}
+      {renderedChildren}
     </li>
   );
 }

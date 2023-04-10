@@ -3,40 +3,21 @@
 .markdown__code__box {
   width: 100%;
   max-width: 800px;
-  background-image: linear-gradient(to left bottom, #17202a, #000);
+  background: #080c0f;
   border-radius: 12px;
   margin: auto;
+  position: relative;
 
-  .markdown__box__data {
-    width: 100%;
-    @include flex(row, space-between, center);
-    @include p-horizontal(20px, 20px);
-    @include p-vertical(5px, 5px);
+  .buttons_and_data__container {
+    @include flex(row, center, center, 8px);
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 2px;
 
     & > h1 {
       color: #ffffffb6;
-      font-size: 16px;
-    }
-
-    .markdown__box__decoration {
-      @include flex(row, center, center, 5px);
-
-      & > div {
-        background: #fff;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-      }
-
-      .red {
-        background: #e74c3c;
-      }
-      .yellow {
-        background: #f4d03f;
-      }
-      .green {
-        background: #2ecc71;
-      }
+      font-size: 13px;
     }
   }
 
@@ -75,11 +56,35 @@
   }
 }
 
+.simple__code__block {
+  background: #fff;
+  color: #e74c3c;
+  font-family: monospace;
+  border-radius: 4px;
+  @include p-horizontal(5px, 5px);
+
+  &.special {
+    display: block;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
 .button__copy__code {
   background: none;
   border: none;
   padding: 10px 10px;
   border-radius: 10px;
+
+  &:active > svg > path {
+    transition: all 200ms;
+  }
+
+  &:active > svg > path {
+    fill: #76ffaf;
+  }
 
   &:hover {
     background: rgba(170, 170, 170, 0.062);
